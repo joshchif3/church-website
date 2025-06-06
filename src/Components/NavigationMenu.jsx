@@ -5,7 +5,7 @@ import {
   FiX, FiMenu, FiHome, FiInfo, FiImage, FiLayers,
   FiCreditCard, FiCalendar, FiUsers, FiMail
 } from 'react-icons/fi';
-import '../styles/NavigationMenu.css';
+import '../styles/navigationMenu.css';
 
 const NavigationMenu = () => {
   const location = useLocation();
