@@ -1,0 +1,150 @@
+/* Hero Section Styles */
+.hero-section {
+    position: relative;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 10;
+  }
+  
+  .hero-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1;
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 20;
+    text-align: center;
+    padding: 0 1rem;
+  }
+  
+  .hero-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    text-align: left;
+    max-width: 65%;
+    padding-left: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .hero-title {
+      font-size: 3rem;
+    }
+  }
+  
+  /* Belief Section */
+  .belief-section {
+    padding: 4rem 1rem;
+    background-color: #f9fafb;
+    max-width: 1280px;
+    margin: 0 auto;
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .belief-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1f2937;
+    border-left: 6px solid #4f46e5;
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+  
+  @media (min-width: 768px) {
+    .belief-title {
+      font-size: 3rem;
+    }
+  }
+  
+  .belief-text {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: #374151;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: justify;
+    padding: 0 1rem;
+  }
+  
+  /* Weekly Message Section */
+  .weekly-message-section {
+    padding: 4rem 1rem;
+    background-color: #f9fafb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .weekly-message-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #1f2937;
+  }
+  
+  .video-wrapper {
+    width: 100%;
+    
+    aspect-ratio: 1000 / 1000;
+    position: relative;
+  }
+  
+  .video-wrapper iframe {
+    aspect-ratio: 10 / 10;
+  
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 0.75rem;
+  }
+  
+  /* Events Section */
+  .events-section {
+    background-color: #f3f4f6;
+    padding: 4rem 1rem;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .events-section {
+      background-color: #0e203a;
+    }
+  }
+  
+  .section-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  /* Map Section */
+.map-section {
+    background-color: #f9fafb;
+  }
+  
+  .map-wrapper {
+    max-width: 100px;
+    height: 450px;
+    width: 100%;
+  }
+  
