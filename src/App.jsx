@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import NavigationMenu from './components/NavigationMenu';
-import ChatBot from './components/ChatBot';
+import Header from './Components/Header';
+import Footer from './Components/Footer';
+import NavigationMenu from './Components/NavigationMenu';
+import ChatBot from './Components/ChatBot';
 import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
 import Gallery from './pages/Gallery';
