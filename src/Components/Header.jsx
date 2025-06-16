@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FiMenu } from 'react-icons/fi';
+import { FiMenu, FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import '../styles/header.css';
 
 const Header = ({ menuOpen, setMenuOpen }) => {
@@ -15,7 +15,13 @@ const Header = ({ menuOpen, setMenuOpen }) => {
           <h1 className="header-title">AFM Church</h1>
         </motion.div>
 
-        
+        <button 
+          className="icon-button"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+        >
+          <FiMenu className="icon" />
+        </button>
       </div>
     </header>
   );
