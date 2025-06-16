@@ -15,13 +15,7 @@ const Header = ({ menuOpen, setMenuOpen }) => {
           <h1 className="header-title">AFM Church</h1>
         </motion.div>
 
-        <button 
-          className="icon-button"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          <FiMenu className="icon" />
-        </button>
+        
       </div>
     </header>
   );
