@@ -65,8 +65,8 @@ const NavigationMenu = ({ menuOpen, setMenuOpen }) => {
       path: '/gallery',
       icon: <FiImage />,
       subLinks: [
-        { name: 'Service Pictures', path: '#' },
-        { name: 'Videos', path: '#' }
+        { name: 'Service Pictures', path: '/gallery/service-pictures' }, // Updated path
+        { name: 'Videos', path: '/gallery/videos' } // Updated path
       ],
       isLink: false
     },
@@ -75,12 +75,12 @@ const NavigationMenu = ({ menuOpen, setMenuOpen }) => {
       path: '/departments',
       icon: <FiLayers />,
       subLinks: [
-        { name: 'Ladies Department', path: '#' },
-        { name: 'Youth Department', path: '#' },
-        { name: "Children's Ministry", path: '#' },
-        { name: 'Welfare Department', path: '#' },
-        { name: 'Education Department', path: '#' },
-        { name: 'Evangelism Department', path: '#' }
+        { name: 'Ladies Department', path: '/departments/ladies' }, // Updated path
+        { name: 'Youth Department', path: '/departments/youth' }, // Updated path
+        { name: "Children's Ministry", path: '/departments/children' }, // Updated path
+        { name: 'Welfare Department', path: '/departments/welfare' }, // Updated path
+        { name: 'Education Department', path: '/departments/education' }, // Updated path
+        { name: 'Evangelism Department', path: '/departments/evangelism' } // Updated path
       ],
       isLink: false
     },
@@ -89,10 +89,10 @@ const NavigationMenu = ({ menuOpen, setMenuOpen }) => {
       path: '/payments',
       icon: <FiDollarSign />,
       subLinks: [
-        { name: 'Donations', path: '#' },
-        { name: 'Tithe', path: '#' },
-        { name: 'Banking Details', path: '#' },
-        { name: 'Offering', path: '#' }
+        { name: 'Donations', path: '/payments/donations' }, // Updated path
+        { name: 'Tithe', path: '/payments/tithe' }, // Updated path
+        { name: 'Banking Details', path: '/payments/banking-details' }, // Updated path
+        { name: 'Offering', path: '/payments/offering' } // Updated path
       ],
       isLink: false
     },
@@ -101,9 +101,9 @@ const NavigationMenu = ({ menuOpen, setMenuOpen }) => {
       path: '/projects',
       icon: <FiCalendar />,
       subLinks: [
-        { name: 'Developmental Projects', path: '#' },
-        { name: 'Future Plans', path: '#' },
-        { name: 'Year Planner', path: '#' }
+        { name: 'Developmental Projects', path: '/projects/developmental' }, // Updated path
+        { name: 'Future Plans', path: '/projects/future-plans' }, // Updated path
+        { name: 'Year Planner', path: '/projects/year-planner' } // Updated path
       ],
       isLink: false
     },
@@ -112,10 +112,10 @@ const NavigationMenu = ({ menuOpen, setMenuOpen }) => {
       path: '/get-connected',
       icon: <FiUsers />,
       subLinks: [
-        { name: 'Prayer Requests', path: '#' },
-        { name: 'Chat With President', path: '#' },
-        { name: 'Chat With Secretary', path: '#' },
-        { name: 'General', path: '#' }
+        { name: 'Prayer Requests', path: '/get-connected/prayer-requests' }, // Updated path
+        { name: 'Chat With President', path: '/get-connected/chat-with-president' }, // Updated path
+        { name: 'Chat With Secretary', path: '/get-connected/chat-with-secretary' }, // Updated path
+        { name: 'General', path: '/get-connected/general' } // Updated path
       ],
       isLink: false
     },
@@ -124,7 +124,7 @@ const NavigationMenu = ({ menuOpen, setMenuOpen }) => {
       path: '/contact-us',
       icon: <FiMail />,
       subLinks: [
-        { name: 'Contact Information', path: '#' }
+        { name: 'Contact Information', path: '/contact-us/information' } // Updated path
       ],
       isLink: false
     }
@@ -161,63 +161,27 @@ const NavigationMenu = ({ menuOpen, setMenuOpen }) => {
                 <div key={item.name}>
                   <div
                     onClick={() => {
-                      if (item.name === 'About Us' && item.subLinks) {
-                        setMobileAboutOpen(!mobileAboutOpen);
-                        setMobileGalleryOpen(false);
-                        setMobileDepartmentsOpen(false);
-                        setMobilePaymentsOpen(false);
-                        setMobileProjectsOpen(false);
-                        setMobileConnectedOpen(false);
-                        setMobileContactOpen(false);
-                      } else if (item.name === 'Gallery' && item.subLinks) {
-                        setMobileGalleryOpen(!mobileGalleryOpen);
-                        setMobileAboutOpen(false);
-                        setMobileDepartmentsOpen(false);
-                        setMobilePaymentsOpen(false);
-                        setMobileProjectsOpen(false);
-                        setMobileConnectedOpen(false);
-                        setMobileContactOpen(false);
-                      } else if (item.name === 'Departments' && item.subLinks) {
-                        setMobileDepartmentsOpen(!mobileDepartmentsOpen);
-                        setMobileAboutOpen(false);
-                        setMobileGalleryOpen(false);
-                        setMobilePaymentsOpen(false);
-                        setMobileProjectsOpen(false);
-                        setMobileConnectedOpen(false);
-                        setMobileContactOpen(false);
-                      } else if (item.name === 'Payments' && item.subLinks) {
-                        setMobilePaymentsOpen(!mobilePaymentsOpen);
-                        setMobileAboutOpen(false);
-                        setMobileGalleryOpen(false);
-                        setMobileDepartmentsOpen(false);
-                        setMobileProjectsOpen(false);
-                        setMobileConnectedOpen(false);
-                        setMobileContactOpen(false);
-                      } else if (item.name === 'Projects' && item.subLinks) {
-                        setMobileProjectsOpen(!mobileProjectsOpen);
-                        setMobileAboutOpen(false);
-                        setMobileGalleryOpen(false);
-                        setMobileDepartmentsOpen(false);
-                        setMobilePaymentsOpen(false);
-                        setMobileConnectedOpen(false);
-                        setMobileContactOpen(false);
-                      } else if (item.name === 'Get Connected' && item.subLinks) {
-                        setMobileConnectedOpen(!mobileConnectedOpen);
-                        setMobileAboutOpen(false);
-                        setMobileGalleryOpen(false);
-                        setMobileDepartmentsOpen(false);
-                        setMobilePaymentsOpen(false);
-                        setMobileProjectsOpen(false);
-                        setMobileContactOpen(false);
-                      } else if (item.name === 'Contact Us' && item.subLinks) {
-                        setMobileContactOpen(!mobileContactOpen);
+                      // This logic can be simplified, but for now, matching your existing structure
+                      if (item.subLinks) {
+                        // Close all other mobile dropdowns
                         setMobileAboutOpen(false);
                         setMobileGalleryOpen(false);
                         setMobileDepartmentsOpen(false);
                         setMobilePaymentsOpen(false);
                         setMobileProjectsOpen(false);
                         setMobileConnectedOpen(false);
+                        setMobileContactOpen(false);
+
+                        // Toggle the current one
+                        if (item.name === 'About Us') setMobileAboutOpen(!mobileAboutOpen);
+                        else if (item.name === 'Gallery') setMobileGalleryOpen(!mobileGalleryOpen);
+                        else if (item.name === 'Departments') setMobileDepartmentsOpen(!mobileDepartmentsOpen);
+                        else if (item.name === 'Payments') setMobilePaymentsOpen(!mobilePaymentsOpen);
+                        else if (item.name === 'Projects') setMobileProjectsOpen(!mobileProjectsOpen);
+                        else if (item.name === 'Get Connected') setMobileConnectedOpen(!mobileConnectedOpen);
+                        else if (item.name === 'Contact Us') setMobileContactOpen(!mobileContactOpen);
                       } else {
+                        // If it's a direct link, close the menu
                         setMenuOpen(false);
                       }
                     }}
@@ -258,7 +222,7 @@ const NavigationMenu = ({ menuOpen, setMenuOpen }) => {
                         <Link
                           key={subLink.name}
                           to={subLink.path}
-                          onClick={() => setMenuOpen(false)}
+                          onClick={() => setMenuOpen(false)} // Close menu when sub-link is clicked
                           className="dropdown-item"
                         >
                           {subLink.name}
@@ -281,7 +245,8 @@ const NavigationMenu = ({ menuOpen, setMenuOpen }) => {
               {item.isLink ? (
                 <Link
                   to={item.path}
-                  className={`nav-link ${location.pathname.startsWith(item.path) ? 'active' : ''}`}
+                  // Checks if the current path starts with the item's path for 'active' state
+                  className={`nav-link ${location.pathname.startsWith(item.path) && item.path !== '/' ? 'active' : (location.pathname === '/' && item.path === '/') ? 'active' : ''}`}
                 >
                   <span className="nav-icon">{item.icon}</span>
                   <span>{item.name}</span>
@@ -289,6 +254,7 @@ const NavigationMenu = ({ menuOpen, setMenuOpen }) => {
               ) : (
                 <button
                   onClick={() => toggleDropdown(item.name)}
+                  // Checks if the current path starts with the item's path for 'active' state for dropdown parent
                   className={`nav-link ${location.pathname.startsWith(item.path) ? 'active' : ''}`}
                 >
                   <span className="nav-icon">{item.icon}</span>

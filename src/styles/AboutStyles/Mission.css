@@ -1,0 +1,104 @@
+/* src/styles/AboutStyles/Mission.css */
+
+/* Custom properties for consistent theming (optional, if not in a global CSS) */
+:root {
+  --mission-primary: #10b981; /* Example Green for mission banner */
+  --mission-secondary: #8b5cf6; /* Example Purple for mission icon */
+  --light-text: #e2e8f0; /* Tailwind gray-200 */
+  --dark-text: #1f2937; /* Tailwind gray-800 */
+  --light-bg: #f9fafb; /* Tailwind gray-50 */
+  --dark-bg: #111827; /* Tailwind gray-900 */
+}
+
+/* Base styles for the mission page container */
+.mission-page {
+  /* Tailwind handles bg-color, text-color, min-height already */
+}
+
+/* Subtle Text Shadow for Banner Title */
+.banner-title {
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Soft shadow for depth */
+}
+
+/* Mission Content Text */
+.mission-text {
+  /* Tailwind handles most of this. */
+}
+
+/* --- Mission Banner Styles (Explicitly controlled) --- */
+.mission-banner {
+  /* Set a max-width to control the overall width of the banner */
+  max-width: 800px; /* Adjust this value based on your image's natural width or desired size */
+  width: 100%; /* Ensure it takes full width up to max-width */
+  margin: 0 auto; /* Center the banner horizontally */
+  
+  /* Set height based on aspect ratio */
+  height: auto; /* Height will automatically adjust based on width and aspect-ratio */
+  aspect-ratio: 16 / 9; /* Sets the container's aspect ratio (width / height). Adjust this to your image's aspect ratio. Common: 16/9, 4/3, 1/1 */
+  
+  background-attachment: scroll;
+  background-position: center; /* Center the background image within its div */
+  background-size: contain; /* Ensures the entire image is visible within the banner div, may leave empty space if aspect ratios don't match */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  
+  /* Make sure it's a block element */
+  display: block;
+  
+  /* Add some spacing below the banner */
+  margin-bottom: 2rem;
+}
+
+/* Responsive adjustments for mission-banner's max-width */
+
+/* Small devices (mobile portrait, e.g., < 640px) */
+@media (max-width: 639px) {
+  .mission-banner {
+    max-width: 100%; /* Allow it to take full width of its container on small screens */
+    /* You might want a minimum height here if aspect-ratio makes it too short */
+    /* min-height: 10rem; */
+  }
+  .banner-title {
+    font-size: 2rem; /* Adjusted for very small screens */
+  }
+  .mission-text {
+    font-size: 1.25rem; /* text-xl on mobile */
+  }
+}
+
+/* Small-Medium devices (e.g., small tablets, 640px and up) */
+@media (min-width: 640px) {
+  .mission-banner {
+    max-width: 600px; /* Example width for small tablets */
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .mission-banner {
+    max-width: 700px; /* Example width for medium tablets */
+  }
+  .banner-title {
+    font-size: 2.5rem;
+  }
+  .mission-text {
+    font-size: 1.5rem; /* md:text-2xl */
+  }
+}
+
+/* Large devices (desktops, 1024px and up) */
+@media (min-width: 1024px) {
+  .mission-banner {
+    max-width: 800px; /* Example width for desktops */
+  }
+  .banner-title {
+    font-size: 3rem;
+  }
+  .mission-text {
+    font-size: 1.875rem; /* lg:text-3xl */
+  }
+}
+
+/* Dark Mode specific CSS if you need to override Tailwind or add non-Tailwind specific dark mode styles */
+.dark .mission-page {
+  /* Tailwind takes care of bg-gray-900 and text-gray-100 automatically */
+}

@@ -1,0 +1,77 @@
+/* src/styles/AboutStyles/Vision.css */
+
+/* Custom properties for consistent theming (optional, if not in a global CSS) */
+:root {
+  --primary-color: #3b82f6; /* Tailwind blue-500 */
+  --secondary-color: #f59e0b; /* Tailwind yellow-500 */
+  --light-text: #e2e8f0; /* Tailwind gray-200 */
+  --dark-text: #1f2937; /* Tailwind gray-800 */
+  --light-bg: #f9fafb; /* Tailwind gray-50 */
+  --dark-bg: #111827; /* Tailwind gray-900 */
+}
+
+/* Base styles for the vision page container (already mostly handled by Tailwind) */
+.vision-page {
+  /* No specific CSS needed here if Tailwind classes cover it */
+}
+
+/* Vision Banner Section - Ensure image scaling */
+.vision-banner {
+  background-attachment: scroll; /* Keeps background static while content scrolls */
+  background-position: center;
+  background-size: cover; /* Ensures the image covers the entire area */
+}
+
+/* Subtle Text Shadow for Banner Title - A modern trend for headings */
+.banner-title {
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Soft shadow for depth */
+}
+
+/* Content Section - List styles */
+.vision-list {
+  list-style-type: none !important; /* Force no default list style */
+  padding-left: 0 !important; /* Remove default padding from ul */
+}
+
+.vision-list-item {
+  list-style-type: none !important; /* Force no default list style on individual items */
+  /* 'flex items-start' in JSX handles alignment */
+}
+
+/* Custom bullet point styling */
+.bullet-point {
+  flex-shrink: 0; /* Prevents bullet from shrinking on smaller screens */
+  /* margin-top: 0.1em; Adjust if the bullet doesn't perfectly align with text baseline */
+}
+
+/* Responsive adjustments for finer control if Tailwind isn't enough */
+
+/* Small devices (mobile portrait, e.g., < 640px) */
+@media (max-width: 639px) {
+  .vision-banner {
+    height: 12rem; /* Even smaller banner on very small mobiles */
+  }
+  .banner-title {
+    font-size: 2.5rem; /* Smaller text for very small screens */
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .vision-banner {
+    height: 20rem; /* md:h-80 */
+  }
+  .vision-list-item span {
+    /* Optional: further adjust text size or spacing for medium screens */
+  }
+}
+
+/* Large devices (desktops, 1024px and up) */
+@media (min-width: 1024px) {
+  .vision-banner {
+    height: 24rem; /* lg:h-96 */
+  }
+  .vision-list-item span {
+    /* Optional: further adjust text size or spacing for large screens */
+  }
+}

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { FiCreditCard, FiDollarSign, FiBank, FiMail } from 'react-icons/fi';
+import { FiCreditCard, FiDollarSign, FiMail } from 'react-icons/fi';
+// The problematic import for FaBank has been removed
 
 const Payments = () => {
   return (
@@ -28,7 +29,7 @@ const Payments = () => {
             className="bg-white dark:bg-gray-700 rounded-xl shadow-md p-6"
           >
             <h3 className="text-xl font-display font-bold mb-3 flex items-center">
-              <FiBank className="mr-2" /> Bank Transfer
+              {/* FaBank icon removed here */} Bank Transfer 
             </h3>
             <div className="space-y-2">
               <p><span className="font-semibold">Bank:</span> Faith Community Bank</p>

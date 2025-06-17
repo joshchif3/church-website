@@ -1,0 +1,219 @@
+/* src/styles/AboutStyles/OurLeadership.css */
+
+/* Custom properties */
+:root {
+  --leadership-primary: #10b981; /* Tailwind green-500 equivalent */
+  --leadership-secondary: #8b5cf6; /* Tailwind purple-600 equivalent */
+  --light-text: #e2e8f0; /* Tailwind gray-200 */
+  --dark-text: #1f2937; /* Tailwind gray-800 */
+  --light-bg: #f9fafb; /* Tailwind gray-50 */
+  --dark-bg: #111827; /* Tailwind gray-900 */
+}
+
+/* Base styles */
+.leadership-page {
+  /* Tailwind handles bg-color, text-color, min-height already in JSX */
+}
+
+/* Full-width banner styles */
+.leadership-banner {
+  width: 100%;
+  height: 400px; /* Fixed height for large screens */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  /* --- Banner Text Alignment --- */
+  justify-content: flex-start; /* Align content to the left */
+  align-items: center; /* Keep vertically centered */
+  padding-left: 8%; /* Adjust this percentage for desired left margin */
+  /* ----------------------------- */
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Section header styles (e.g., "OUR LEADERSHIP STRUCTURE", "KEY LEADERSHIP") */
+.section-header {
+  position: relative;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--dark-text);
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
+  text-align: center;
+}
+
+.section-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--leadership-primary), var(--leadership-secondary));
+  border-radius: 2px;
+}
+
+.dark .section-header {
+  color: var(--light-text);
+}
+
+/* Accordion styles */
+.accordion-item {
+  background: white;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.dark .accordion-item {
+  background: var(--dark-bg);
+}
+
+.accordion-header {
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--dark-text);
+  background: rgba(16, 185, 129, 0.1); /* green-500 at 10% opacity */
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dark .accordion-header {
+  color: var(--light-text);
+  background: rgba(16, 185, 129, 0.2); /* green-500 at 20% opacity */
+}
+
+.accordion-header:hover {
+  background: rgba(16, 185, 129, 0.2); /* green-500 at 20% opacity */
+}
+
+.dark .accordion-header:hover {
+  background: rgba(16, 185, 129, 0.3); /* green-500 at 30% opacity */
+}
+
+.accordion-content {
+  padding: 1.5rem;
+  background: white;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dark .accordion-content {
+  background: var(--dark-bg);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Leader images grid */
+.leader-pictures-container {
+  width: 100%;
+  padding: 0 1rem; /* Added padding to prevent content from touching edges */
+}
+
+.leader-pictures-grid {
+  display: grid;
+  /* --- Leader Pictures Width/Size Adjustments --- */
+  /* Increased minmax base to make images wider on larger screens */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+  gap: 2rem;
+  justify-content: center;
+  padding: 1rem 0;
+  margin: 0 auto;
+  max-width: 1200px; /* Increased max-width for the overall grid */
+}
+
+.leader-image-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.leader-image {
+  width: 100%;
+  height: 280px; /* Increased height to match increased width base, ensuring full display */
+  object-fit: cover; /* Ensures image covers the area, potentially cropping edges if aspect ratio doesn't match */
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.leader-image:hover {
+  transform: scale(1.03);
+}
+
+.leader-caption {
+  font-weight: 600;
+  color: var(--dark-text);
+  font-size: 1rem;
+}
+
+.dark .leader-caption {
+  color: var(--light-text);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .leadership-banner {
+    height: 350px;
+    padding-left: 5%; /* Adjust left padding for medium screens */
+  }
+  .leader-pictures-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Adjusted minmax for medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .leadership-banner {
+    height: 300px;
+    padding-left: 3%; /* Adjust left padding for tablets */
+  }
+  
+  .leader-pictures-grid {
+    grid-template-columns: repeat(2, 1fr); /* Two columns for tablet view */
+    gap: 1.5rem;
+  }
+  
+  .leader-image {
+    height: 220px; /* Adjusted height for tablets */
+  }
+  .section-header {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .leadership-banner {
+    height: 250px;
+    padding-left: 2%; /* Adjust left padding for mobile */
+  }
+  
+  .leader-pictures-grid {
+    grid-template-columns: 1fr; /* Single column for mobile view */
+  }
+  
+  .section-header {
+    font-size: 1.6rem;
+  }
+  
+  .accordion-header {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  .leader-image {
+    height: 200px; /* Adjusted image height for smaller phones */
+  }
+}

@@ -1,21 +1,56 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
+
+// Components
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import NavigationMenu from './Components/NavigationMenu';
 import ChatBot from './Components/ChatBot';
+
+// Pages - Direct Imports for top-level pages that might still be files
 import Home from './pages/Home';
-import Gallery from './pages/Gallery';
-import Departments from './pages/Departments';
-import Projects from './pages/Projects';
-import GetConnected from './pages/GetConnected';
-import ContactUs from './pages/ContactUs';
+
+// Pages - Nested imports for pages that are now directories with sub-components
+// About Us Sub-pages (already correctly structured)
 import Vision from './pages/AboutUS/Vision';
 import Mission from './pages/AboutUS/Mission';
 import OurLeadership from './pages/AboutUS/OurLeadership';
 import History from './pages/AboutUS/History';
 import ConfessionOfFaith from './pages/AboutUS/ConfessionOfFaith';
 import Provinces from './pages/AboutUS/Provinces';
+
+// Gallery Sub-pages
+import ServicePictures from './pages/Gallery/ServicePictures';
+import GalleryVideos from './pages/Gallery/Videos'; // Renamed to avoid conflict if you had a top-level Gallery component
+
+// Departments Sub-pages
+import LadiesDepartment from './pages/Departments/LadiesDepartment';
+import YouthDepartment from './pages/Departments/YouthDepartment';
+import ChildrensMinistry from './pages/Departments/ChildrensMinistry';
+import WelfareDepartment from './pages/Departments/WelfareDepartment';
+import EducationDepartment from './pages/Departments/EducationDepartment';
+import EvangelismDepartment from './pages/Departments/EvangelismDepartment';
+
+// Payments Sub-pages
+import Donations from './pages/Payments/Donations';
+import Tithe from './pages/Payments/Tithe';
+import BankingDetails from './pages/Payments/BankingDetails';
+import Offering from './pages/Payments/Offering';
+
+// Projects Sub-pages
+import DevelopmentalProjects from './pages/Projects/DevelopmentalProjects';
+import FuturePlans from './pages/Projects/FuturePlans';
+import YearPlanner from './pages/Projects/YearPlanner';
+
+// Get Connected Sub-pages
+import PrayerRequests from './pages/GetConnected/PrayerRequests';
+import ChatWithPresident from './pages/GetConnected/ChatWithPresident';
+import ChatWithSecretary from './pages/GetConnected/ChatWithSecretary';
+import GeneralConnection from './pages/GetConnected/General'; // Renamed to avoid conflict if you had a top-level General component
+
+// Contact Us Sub-pages
+import ContactInformation from './pages/ContactUs/ContactInformation';
+
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -41,7 +76,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
 
-            {/* About Us direct routes */}
+            {/* About Us Routes (already correctly structured) */}
             <Route path="/about-us/vision" element={<Vision />} />
             <Route path="/about-us/mission" element={<Mission />} />
             <Route path="/about-us/our-leadership" element={<OurLeadership />} />
@@ -49,11 +84,40 @@ function App() {
             <Route path="/about-us/confession-of-faith" element={<ConfessionOfFaith />} />
             <Route path="/about-us/provinces" element={<Provinces />} />
 
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/departments" element={<Departments />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/get-connected" element={<GetConnected />} />
-            <Route path="/contact-us" element={<ContactUs />} />
+            {/* Gallery Routes */}
+            <Route path="/gallery/service-pictures" element={<ServicePictures />} />
+            <Route path="/gallery/videos" element={<GalleryVideos />} />
+
+            {/* Departments Routes */}
+            <Route path="/departments/ladies" element={<LadiesDepartment />} />
+            <Route path="/departments/youth" element={<YouthDepartment />} />
+            <Route path="/departments/children" element={<ChildrensMinistry />} />
+            <Route path="/departments/welfare" element={<WelfareDepartment />} />
+            <Route path="/departments/education" element={<EducationDepartment />} />
+            <Route path="/departments/evangelism" element={<EvangelismDepartment />} />
+
+            {/* Payments Routes */}
+            <Route path="/payments/donations" element={<Donations />} />
+            <Route path="/payments/tithe" element={<Tithe />} />
+            <Route path="/payments/banking-details" element={<BankingDetails />} />
+            <Route path="/payments/offering" element={<Offering />} />
+
+            {/* Projects Routes */}
+            <Route path="/projects/developmental" element={<DevelopmentalProjects />} />
+            <Route path="/projects/future-plans" element={<FuturePlans />} />
+            <Route path="/projects/year-planner" element={<YearPlanner />} />
+
+            {/* Get Connected Routes */}
+            <Route path="/get-connected/prayer-requests" element={<PrayerRequests />} />
+            <Route path="/get-connected/chat-with-president" element={<ChatWithPresident />} />
+            <Route path="/get-connected/chat-with-secretary" element={<ChatWithSecretary />} />
+            <Route path="/get-connected/general" element={<GeneralConnection />} />
+
+            {/* Contact Us Routes */}
+            <Route path="/contact-us/information" element={<ContactInformation />} />
+
+            {/* Potentially add a catch-all for 404 if needed */}
+            {/* <Route path="*" element={<NotFoundPage />} /> */}
           </Routes>
         </main>
         
