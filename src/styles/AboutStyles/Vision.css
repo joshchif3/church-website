@@ -1,77 +1,185 @@
 /* src/styles/AboutStyles/Vision.css */
 
-/* Custom properties for consistent theming (optional, if not in a global CSS) */
-:root {
-  --primary-color: #3b82f6; /* Tailwind blue-500 */
-  --secondary-color: #f59e0b; /* Tailwind yellow-500 */
-  --light-text: #e2e8f0; /* Tailwind gray-200 */
-  --dark-text: #1f2937; /* Tailwind gray-800 */
-  --light-bg: #f9fafb; /* Tailwind gray-50 */
-  --dark-bg: #111827; /* Tailwind gray-900 */
-}
-
 /* Base styles for the vision page container (already mostly handled by Tailwind) */
 .vision-page {
-  /* No specific CSS needed here if Tailwind classes cover it */
+  line-height: 1.75; /* Improved readability for all text */
 }
 
-/* Vision Banner Section - Ensure image scaling */
+/* --- Banner Styles --- */
 .vision-banner {
+  /* These Tailwind classes provide the width and height: w-full h-48 sm:h-64 md:h-80 lg:h-96 */
+  /* These Tailwind classes handle the background image: bg-cover bg-center */
+  /* The relative and overflow-hidden classes are also from Tailwind */
   background-attachment: scroll; /* Keeps background static while content scrolls */
   background-position: center;
   background-size: cover; /* Ensures the image covers the entire area */
 }
 
-/* Subtle Text Shadow for Banner Title - A modern trend for headings */
-.banner-title {
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Soft shadow for depth */
+.vision-banner .absolute { /* This targets the black opacity overlay */
+  /* inset-0 bg-black opacity-40 */
 }
 
-/* Content Section - List styles */
+/* --- Main Content Layout (Consistent with History/Mission pages) --- */
+.vision-content {
+  max-width: 960px; /* Consistent with history/mission content max-width */
+  margin: 0 auto;
+  padding-left: 1rem; /* Tailwind px-4 maps to this on small screens */
+  padding-right: 1rem; /* Tailwind px-4 maps to this on small screens */
+  padding-top: 3rem; /* Tailwind py-12 is roughly 3rem top/bottom */
+  padding-bottom: 3rem; /* Tailwind py-12 is roughly 3rem top/bottom */
+}
+
+/* --- Section Header Styles (e.g., "Our Vision") --- */
+.vision-section-header {
+  position: relative;
+  font-size: 2.5rem; /* Larger for main section headers */
+  font-weight: 700;
+  color: #1f2937; /* Dark text (Tailwind gray-800) */
+  margin-bottom: 2.5rem;
+  padding-bottom: 0.75rem;
+  text-align: center;
+}
+
+.vision-section-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px; /* Wider underline */
+  height: 5px; /* Thicker underline */
+  /* Using direct hex values from History.css accents */
+  background: linear-gradient(90deg, #ce3a27, #4f46e5);
+  border-radius: 2px;
+}
+
+.dark .vision-section-header {
+  color: #e2e8f0; /* Light text (Tailwind gray-200) */
+}
+
+/* --- Individual Vision Section Styles --- */
+.vision-section {
+  background-color: white; /* Light mode background */
+  border-radius: 8px;
+  padding: 2.5rem; /* Consistent padding with history/mission sections */
+  margin-bottom: 3rem; /* Space below the section */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  /* Using direct hex values from History.css accents */
+  border-left: 6px solid #ce3a27; /* Primary accent color for border */
+  transition: all 0.3s ease-in-out;
+}
+
+.dark .vision-section {
+  background-color: #111827; /* Dark background (Tailwind gray-900) */
+  /* Using direct hex values from History.css accents */
+  border-left-color: #4f46e5; /* Secondary accent color for border in dark mode */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.vision-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.dark .vision-section:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Vision List Styling --- */
+.vision-list-container {
+  /* Basic container if needed for specific spacing within the section */
+}
+
 .vision-list {
-  list-style-type: none !important; /* Force no default list style */
-  padding-left: 0 !important; /* Remove default padding from ul */
+  /* list-none space-y-6 text-base md:text-lg lg:text-xl leading-relaxed text-gray-800 dark:text-gray-200 font-sans */
+  padding-left: 0 !important; /* Ensure no default UL padding */
 }
 
 .vision-list-item {
+  /* flex items-start */
   list-style-type: none !important; /* Force no default list style on individual items */
-  /* 'flex items-start' in JSX handles alignment */
+  margin-bottom: 1rem; /* Add consistent spacing between list items */
+  color: #1f2937; /* Dark text (Tailwind gray-800) */
 }
 
-/* Custom bullet point styling */
-.bullet-point {
+.dark .vision-list-item {
+  color: #e2e8f0; /* Light text (Tailwind gray-200) */
+}
+
+.vision-list-item .bullet-point {
+  /* text-yellow-500 mr-3 text-2xl leading-none */
+  /* Using direct hex value from History.css primary accent */
+  color: #ce3a27; /* Consistent accent color for bullets */
+  font-weight: bold; /* Make bullet points stand out more */
+  margin-top: -0.1em; /* Adjust vertical alignment of bullet */
   flex-shrink: 0; /* Prevents bullet from shrinking on smaller screens */
-  /* margin-top: 0.1em; Adjust if the bullet doesn't perfectly align with text baseline */
 }
 
-/* Responsive adjustments for finer control if Tailwind isn't enough */
 
-/* Small devices (mobile portrait, e.g., < 640px) */
-@media (max-width: 639px) {
-  .vision-banner {
-    height: 12rem; /* Even smaller banner on very small mobiles */
+/* --- Responsive Adjustments for Content Text --- */
+@media (max-width: 1024px) {
+  .vision-content {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
-  .banner-title {
-    font-size: 2.5rem; /* Smaller text for very small screens */
+  .vision-section-header {
+    font-size: 2.2rem;
+  }
+  .vision-section {
+    padding: 2rem;
+  }
+  .vision-list {
+    font-size: 1.125rem; /* md:text-lg */
+  }
+  .vision-list-item .bullet-point {
+    font-size: 1.8rem; /* Adjust bullet size with text */
   }
 }
 
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-  .vision-banner {
-    height: 20rem; /* md:h-80 */
+@media (max-width: 768px) {
+  .vision-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
-  .vision-list-item span {
-    /* Optional: further adjust text size or spacing for medium screens */
+  .vision-section-header {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  .vision-section-header::after {
+    width: 120px;
+  }
+  .vision-section {
+    padding: 1.5rem;
+  }
+  .vision-list {
+    font-size: 1rem; /* text-base */
+  }
+  .vision-list-item .bullet-point {
+    font-size: 1.5rem;
   }
 }
 
-/* Large devices (desktops, 1024px and up) */
-@media (min-width: 1024px) {
-  .vision-banner {
-    height: 24rem; /* lg:h-96 */
+@media (max-width: 480px) {
+  .vision-content {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
-  .vision-list-item span {
-    /* Optional: further adjust text size or spacing for large screens */
+  .vision-section-header {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .vision-section-header::after {
+    width: 90px;
+    height: 3px;
+  }
+  .vision-section {
+    padding: 1rem;
+    border-left-width: 4px;
+  }
+  .vision-list {
+    font-size: 0.95rem; /* slightly smaller for small screens */
+  }
+  .vision-list-item .bullet-point {
+    font-size: 1.25rem;
   }
 }

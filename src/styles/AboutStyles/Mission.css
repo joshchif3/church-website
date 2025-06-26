@@ -1,18 +1,20 @@
 /* src/styles/AboutStyles/Mission.css */
 
-/* Custom properties for consistent theming (optional, if not in a global CSS) */
+/* Custom properties for consistent theming */
 :root {
-  --mission-primary: #10b981; /* Example Green for mission banner */
-  --mission-secondary: #8b5cf6; /* Example Purple for mission icon */
+  --mission-primary: #10b981; /* Original Green for mission banner, kept as is */
+  --mission-secondary: #8b5cf6; /* Original Purple for mission icon, kept as is */
+  --history-section-primary: #ce3a27; /* From History - Primary accent color for content sections */
+  --history-section-secondary: #4f46e5; /* From History - Secondary accent color for dark mode border */
   --light-text: #e2e8f0; /* Tailwind gray-200 */
   --dark-text: #1f2937; /* Tailwind gray-800 */
-  --light-bg: #f9fafb; /* Tailwind gray-50 */
-  --dark-bg: #111827; /* Tailwind gray-900 */
+  --light-bg-body: #f9fafb; /* Tailwind gray-50 */
+  --dark-bg-body: #111827; /* Tailwind gray-900 */
 }
 
-/* Base styles for the mission page container */
+/* Base page styling */
 .mission-page {
-  /* Tailwind handles bg-color, text-color, min-height already */
+  line-height: 1.75; /* Improved readability for all text */
 }
 
 /* Subtle Text Shadow for Banner Title */
@@ -25,7 +27,7 @@
   /* Tailwind handles most of this. */
 }
 
-/* --- Mission Banner Styles (Explicitly controlled) --- */
+/* --- Mission Banner Styles (Original styling preserved) --- */
 .mission-banner {
   /* Set a max-width to control the overall width of the banner */
   max-width: 800px; /* Adjust this value based on your image's natural width or desired size */
@@ -60,9 +62,6 @@
   .banner-title {
     font-size: 2rem; /* Adjusted for very small screens */
   }
-  .mission-text {
-    font-size: 1.25rem; /* text-xl on mobile */
-  }
 }
 
 /* Small-Medium devices (e.g., small tablets, 640px and up) */
@@ -80,9 +79,6 @@
   .banner-title {
     font-size: 2.5rem;
   }
-  .mission-text {
-    font-size: 1.5rem; /* md:text-2xl */
-  }
 }
 
 /* Large devices (desktops, 1024px and up) */
@@ -93,12 +89,146 @@
   .banner-title {
     font-size: 3rem;
   }
+}
+
+
+/* --- Main Content Layout (New/Updated based on History.css) --- */
+.mission-content {
+  max-width: 960px; /* Consistent with history-content max-width */
+  margin: 0 auto;
+  padding-left: 1rem; /* Tailwind px-4 maps to this on small screens */
+  padding-right: 1rem; /* Tailwind px-4 maps to this on small screens */
+  padding-top: 3rem; /* Tailwind py-12 is roughly 3rem top/bottom */
+  padding-bottom: 3rem; /* Tailwind py-12 is roughly 3rem top/bottom */
+}
+
+/* --- Section Header Styles (e.g., "Our Mission Statement") --- */
+.mission-section-header {
+  position: relative;
+  font-size: 2.5rem; /* Larger for main section headers */
+  font-weight: 700;
+  color: #1f2937; /* Dark text */
+  margin-bottom: 2.5rem;
+  padding-bottom: 0.75rem;
+  text-align: center;
+}
+
+.mission-section-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px; /* Wider underline */
+  height: 5px; /* Thicker underline */
+  background: linear-gradient(90deg, var(--history-section-primary), var(--history-section-secondary));
+  border-radius: 2px;
+}
+
+.dark .mission-section-header {
+  color: var(--light-text);
+}
+
+/* --- Individual Mission Section Styles --- */
+.mission-section {
+  background-color: white; /* Light mode background */
+  border-radius: 8px;
+  padding: 2.5rem; /* Consistent padding with history sections */
+  margin-bottom: 3rem; /* Space below the section */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  border-left: 6px solid var(--history-section-primary); /* Primary accent color for border */
+  transition: all 0.3s ease-in-out;
+}
+
+.dark .mission-section {
+  background-color: var(--dark-bg-body); /* Dark background */
+  border-left-color: var(--history-section-secondary); /* Secondary accent color for border in dark mode */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.mission-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.dark .mission-section:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Mission text container for alignment */
+.mission-text-container {
+  text-align: center; /* Center the mission statement */
+}
+
+/* Mission text styling */
+.mission-text {
+  font-size: 1.75rem; /* Large font for prominence */
+  font-weight: 500;
+  color: var(--dark-text);
+  line-height: 1.6;
+  font-family: 'Open Sans', sans-serif; /* Example font, ensure it's imported or available */
+  margin: 0; /* Remove default paragraph margins */
+}
+
+.dark .mission-text {
+  color: var(--light-text);
+}
+
+/* --- Responsive Adjustments for Content Text --- */
+@media (max-width: 1024px) {
+  .mission-content {
+    padding-left: 1.5rem; /* md:px-6 */
+    padding-right: 1.5rem; /* md:px-6 */
+  }
+  .mission-section-header {
+    font-size: 2.2rem;
+  }
+  .mission-section {
+    padding: 2rem;
+  }
   .mission-text {
-    font-size: 1.875rem; /* lg:text-3xl */
+    font-size: 1.5rem; /* md:text-2xl */
   }
 }
 
-/* Dark Mode specific CSS if you need to override Tailwind or add non-Tailwind specific dark mode styles */
-.dark .mission-page {
-  /* Tailwind takes care of bg-gray-900 and text-gray-100 automatically */
+@media (max-width: 768px) {
+  .mission-content {
+    padding-left: 1rem; /* sm:px-4 */
+    padding-right: 1rem; /* sm:px-4 */
+  }
+  .mission-section-header {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  .mission-section-header::after {
+    width: 120px;
+  }
+  .mission-section {
+    padding: 1.5rem;
+  }
+  .mission-text {
+    font-size: 1.25rem; /* text-xl */
+  }
+}
+
+@media (max-width: 480px) {
+  .mission-content {
+    padding-left: 0.75rem; /* px-3 */
+    padding-right: 0.75rem; /* px-3 */
+  }
+  .mission-section-header {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .mission-section-header::after {
+    width: 90px;
+    height: 3px;
+  }
+  .mission-section {
+    padding: 1rem;
+    border-left-width: 4px;
+  }
+  .mission-text {
+    font-size: 1.1rem; /* text-lg */
+  }
 }

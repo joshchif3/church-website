@@ -1,24 +1,33 @@
+/* navigationMenu.css */
+
 /* Desktop Top Nav */
 .nav-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  /* *** REMOVE THESE PROPERTIES *** */
+  /* position: fixed; */
+  /* top: 0; */
+  /* left: 0; */
+  /* right: 0; */
+  /* z-index: 40; */
+  /* ******************************* */
+
   background-color: #ffffff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-  z-index: 40;
-  display: none;
+  display: none; /* Hidden on mobile by default */
+
+  /* Add a border at the bottom for visual separation */
+  border-bottom: 1px solid #e0e0e0;
 }
 
 @media (min-width: 768px) {
   .nav-container {
-    display: block;
+    display: block; /* Show on desktop */
   }
 }
 
 @media (prefers-color-scheme: dark) {
   .nav-container {
     background-color: #082041;
+    border-bottom-color: #333; /* Darker border for dark mode */
   }
 }
 
@@ -30,8 +39,13 @@
   padding: 1rem;
 }
 
-.nav-item {
-  position: relative;
+/* Ensure desktop nav items are regular block elements */
+.desktop-nav-item { /* New class for desktop nav items, removed 'relative' for now */
+  /* position: relative; */ /* Removed position relative here */
+  /* We want dropdowns to push content, not float absolutely over */
+  display: flex;
+  flex-direction: column; /* Allows content below the main link */
+  align-items: center;
 }
 
 .nav-link {
@@ -47,6 +61,7 @@
   background: none;
   border: none;
   cursor: pointer;
+  width: 100%; /* Ensure button/link takes full width of its parent (.desktop-nav-item) */
 }
 
 .nav-link:hover {
@@ -82,7 +97,7 @@
   }
 }
 
-/* Mobile menu and toggle button */
+/* Mobile menu and toggle button - these retain fixed positioning */
 .menu-toggle {
   position: fixed;
   top: 1rem;
@@ -187,22 +202,31 @@
     color: #e5e7eb;
   }
 }
-/* Dropdown Styles */
+
+/* Dropdown Styles for Mobile */
+/* This class is now primarily for mobile dropdowns (which are often overlays within the mobile-menu) */
 .dropdown-menu {
   background-color: #ffffff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   border-radius: 0.5rem;
   overflow: hidden;
-  z-index: 50;
-  margin-top: 0.25rem;
+  /* Removed z-index and margin-top as they are less relevant for mobile nested menus */
 }
 
-.nav-item .dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  min-width: 200px;
+/* Desktop Dropdown Content - NEW class to make it push content */
+.desktop-dropdown-content {
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-top: 0.5rem; /* Space between the main nav item and the dropdown */
+
+  /* *** CRITICAL: Ensure this is NOT `position: absolute` for pushing content *** */
+  position: static; /* This is the default, ensures it's in normal flow */
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Take full width within its parent .desktop-nav-item */
+  /* Remove any `top`, `left`, `transform`, `min-width` that were for absolute positioning */
 }
 
 .dropdown-item {
@@ -226,7 +250,9 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .dropdown-menu {
+  /* Apply dark mode styles to both mobile and desktop dropdowns */
+  .dropdown-menu,
+  .desktop-dropdown-content {
     background-color: #1f2937;
   }
 

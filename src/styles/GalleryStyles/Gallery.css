@@ -1,0 +1,266 @@
+/* src/styles/GalleryStyles/Gallery.css */
+
+.gallery-page {
+  background-color: #f9fafb; /* Light background for the page */
+  color: #1f2937; /* Dark text for readability */
+  min-height: 100vh;
+  padding: 3rem 1rem; /* Padding top/bottom and sides */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align content to the top */
+}
+
+/* Dark mode styles */
+.dark .gallery-page {
+  background-color: #1a202c;
+  color: #e2e8f0;
+}
+
+.gallery-container {
+  max-width: 1200px; /* Wider container for the gallery */
+  width: 100%;
+  padding: 1.5rem; /* Padding inside the container */
+}
+
+.gallery-title {
+  font-size: 2.5rem; /* Title size */
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2.5rem; /* Space below the title */
+  color: #1f2937;
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+.dark .gallery-title {
+  color: #e2e8f0;
+}
+
+/* Subtle underline for the title */
+.gallery-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #ce3a27, #4f46e5);
+  border-radius: 2px;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid columns */
+  gap: 1.5rem; /* Space between grid items */
+}
+
+.image-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  cursor: pointer;
+  background-color: #ffffff; /* Card background */
+  display: flex; /* Ensure content stretches */
+  flex-direction: column; /* Stack image and overlay */
+}
+
+.dark .image-card {
+  background-color: #2d3748;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-image {
+  width: 100%;
+  height: 200px; /* Fixed height for consistent grid appearance */
+  object-fit: cover; /* Cover the area, cropping if necessary */
+  display: block;
+  transition: transform 0.3s ease-in-out;
+}
+
+.image-card:hover .gallery-image {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)); /* Gradient overlay */
+  color: white;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none; /* Allows clicks to pass through to the card */
+}
+
+.image-card:hover .image-overlay {
+  opacity: 1; /* Show overlay on hover */
+}
+
+.image-description {
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); /* Text shadow for readability */
+}
+
+/* --- Modal Styles --- */
+.image-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85); /* Darker backdrop */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's on top of everything */
+  padding: 1rem; /* Padding around the modal content */
+}
+
+.image-modal-content {
+  background-color: #ffffff; /* White background for modal content */
+  border-radius: 10px;
+  padding: 1.5rem;
+  max-width: 90vw; /* Max width relative to viewport */
+  max-height: 90vh; /* Max height relative to viewport */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.dark .image-modal-content {
+  background-color: #1f2937;
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #ce3a27; /* Red close button */
+  font-size: 2.5rem;
+  cursor: pointer;
+  z-index: 1001; /* Above image */
+  transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.dark .modal-close-button {
+  color: #4f46e5; /* Blue close button in dark mode */
+}
+
+.modal-close-button:hover {
+  color: #b91c1c; /* Darker red on hover */
+  transform: rotate(90deg);
+}
+
+.dark .modal-close-button:hover {
+  color: #3b82f6; /* Darker blue on hover */
+}
+
+
+.modal-image {
+  max-width: 100%;
+  max-height: calc(90vh - 80px); /* Adjust based on title/description height */
+  object-fit: contain; /* Ensure the entire image fits */
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.modal-image-description {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.dark .modal-image-description {
+  color: #e2e8f0;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .image-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.25rem;
+  }
+  .gallery-image {
+    height: 180px;
+  }
+  .gallery-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .image-grid {
+    grid-template-columns: repeat(auto-fit, minminmax(150px, 1fr)); /* More columns on smaller screens */
+    gap: 1rem;
+  }
+  .gallery-image {
+    height: 150px;
+  }
+  .gallery-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  .gallery-title::after {
+    width: 80px;
+    height: 3px;
+  }
+  .modal-image {
+    max-height: calc(85vh - 60px); /* Adjust for smaller screens */
+  }
+  .image-modal-content {
+    padding: 1rem;
+  }
+  .modal-close-button {
+    font-size: 2rem;
+    top: 5px;
+    right: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-page {
+    padding: 1.5rem 0.75rem;
+  }
+  .gallery-container {
+    padding: 1rem;
+  }
+  .image-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Even more columns for very small screens */
+    gap: 0.75rem;
+  }
+  .gallery-image {
+    height: 120px;
+  }
+  .gallery-title {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .gallery-title::after {
+    width: 60px;
+  }
+  .image-overlay {
+    padding: 0.75rem;
+  }
+  .image-description {
+    font-size: 0.85rem;
+  }
+  .modal-image {
+    max-height: calc(80vh - 40px);
+  }
+  .modal-image-description {
+    font-size: 0.9rem;
+  }
+}

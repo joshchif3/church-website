@@ -65,8 +65,8 @@ const NavigationMenu = ({ menuOpen, setMenuOpen }) => {
       path: '/gallery',
       icon: <FiImage />,
       subLinks: [
-        { name: 'Service Pictures', path: '/gallery/service-pictures' }, // Updated path
-        { name: 'Videos', path: '/gallery/videos' } // Updated path
+        { name: 'Service Pictures', path: '/gallery/service-pictures' },
+        { name: 'Videos', path: '/gallery/videos' }
       ],
       isLink: false
     },
@@ -75,12 +75,12 @@ const NavigationMenu = ({ menuOpen, setMenuOpen }) => {
       path: '/departments',
       icon: <FiLayers />,
       subLinks: [
-        { name: 'Ladies Department', path: '/departments/ladies' }, // Updated path
-        { name: 'Youth Department', path: '/departments/youth' }, // Updated path
-        { name: "Children's Ministry", path: '/departments/children' }, // Updated path
-        { name: 'Welfare Department', path: '/departments/welfare' }, // Updated path
-        { name: 'Education Department', path: '/departments/education' }, // Updated path
-        { name: 'Evangelism Department', path: '/departments/evangelism' } // Updated path
+        { name: 'Ladies Department', path: '/departments/ladies' },
+        { name: 'Youth Department', path: '/departments/youth' },
+        { name: "Children's Ministry", path: '/departments/children' },
+        { name: 'Welfare Department', path: '/departments/welfare' },
+        { name: 'Education Department', path: '/departments/education' },
+        { name: 'Evangelism Department', path: '/departments/evangelism' }
       ],
       isLink: false
     },
@@ -89,10 +89,10 @@ const NavigationMenu = ({ menuOpen, setMenuOpen }) => {
       path: '/payments',
       icon: <FiDollarSign />,
       subLinks: [
-        { name: 'Donations', path: '/payments/donations' }, // Updated path
-        { name: 'Tithe', path: '/payments/tithe' }, // Updated path
-        { name: 'Banking Details', path: '/payments/banking-details' }, // Updated path
-        { name: 'Offering', path: '/payments/offering' } // Updated path
+        { name: 'Donations', path: '/payments/donations' },
+        { name: 'Tithe', path: '/payments/tithe' },
+        { name: 'Banking Details', path: '/payments/banking-details' },
+        { name: 'Offering', path: '/payments/offering' }
       ],
       isLink: false
     },
@@ -101,9 +101,9 @@ const NavigationMenu = ({ menuOpen, setMenuOpen }) => {
       path: '/projects',
       icon: <FiCalendar />,
       subLinks: [
-        { name: 'Developmental Projects', path: '/projects/developmental' }, // Updated path
-        { name: 'Future Plans', path: '/projects/future-plans' }, // Updated path
-        { name: 'Year Planner', path: '/projects/year-planner' } // Updated path
+        { name: 'Developmental Projects', path: '/projects/developmental' },
+        { name: 'Future Plans', path: '/projects/future-plans' },
+        { name: 'Year Planner', path: '/projects/year-planner' }
       ],
       isLink: false
     },
@@ -112,10 +112,10 @@ const NavigationMenu = ({ menuOpen, setMenuOpen }) => {
       path: '/get-connected',
       icon: <FiUsers />,
       subLinks: [
-        { name: 'Prayer Requests', path: '/get-connected/prayer-requests' }, // Updated path
-        { name: 'Chat With President', path: '/get-connected/chat-with-president' }, // Updated path
-        { name: 'Chat With Secretary', path: '/get-connected/chat-with-secretary' }, // Updated path
-        { name: 'General', path: '/get-connected/general' } // Updated path
+        { name: 'Prayer Requests', path: '/get-connected/prayer-requests' },
+        { name: 'Chat With President', path: '/get-connected/chat-with-president' },
+        { name: 'Chat With Secretary', path: '/get-connected/chat-with-secretary' },
+        { name: 'General', path: '/get-connected/general' }
       ],
       isLink: false
     },
@@ -124,7 +124,7 @@ const NavigationMenu = ({ menuOpen, setMenuOpen }) => {
       path: '/contact-us',
       icon: <FiMail />,
       subLinks: [
-        { name: 'Contact Information', path: '/contact-us/information' } // Updated path
+        { name: 'Contact Information', path: '/contact-us/information' }
       ],
       isLink: false
     }
@@ -132,14 +132,14 @@ const NavigationMenu = ({ menuOpen, setMenuOpen }) => {
 
   return (
     <>
-      {/* Mobile Menu Toggle */}
+      {/* Mobile Menu Toggle - This can remain fixed as it opens an overlay */}
       <div className="menu-toggle md:hidden">
         <button onClick={() => setMenuOpen(true)}>
           <FiMenu className="icon" />
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - This is a full-screen overlay, so fixed positioning is correct here */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -161,7 +161,6 @@ const NavigationMenu = ({ menuOpen, setMenuOpen }) => {
                 <div key={item.name}>
                   <div
                     onClick={() => {
-                      // This logic can be simplified, but for now, matching your existing structure
                       if (item.subLinks) {
                         // Close all other mobile dropdowns
                         setMobileAboutOpen(false);
@@ -192,7 +191,7 @@ const NavigationMenu = ({ menuOpen, setMenuOpen }) => {
                     {item.subLinks && (
                       <FiChevronDown
                         className={`ml-auto transition-transform duration-300 ${
-                          (item.name === 'About Us' && mobileAboutOpen) || 
+                          (item.name === 'About Us' && mobileAboutOpen) ||
                           (item.name === 'Gallery' && mobileGalleryOpen) ||
                           (item.name === 'Departments' && mobileDepartmentsOpen) ||
                           (item.name === 'Payments' && mobilePaymentsOpen) ||
@@ -203,33 +202,33 @@ const NavigationMenu = ({ menuOpen, setMenuOpen }) => {
                       />
                     )}
                   </div>
-                  {item.subLinks && 
-                    ((item.name === 'About Us' && mobileAboutOpen) || 
-                     (item.name === 'Gallery' && mobileGalleryOpen) ||
-                     (item.name === 'Departments' && mobileDepartmentsOpen) ||
-                     (item.name === 'Payments' && mobilePaymentsOpen) ||
-                     (item.name === 'Projects' && mobileProjectsOpen) ||
-                     (item.name === 'Get Connected' && mobileConnectedOpen) ||
-                     (item.name === 'Contact Us' && mobileContactOpen)) && (
-                    <motion.div 
-                      className="dropdown-menu"
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      {item.subLinks.map((subLink) => (
-                        <Link
-                          key={subLink.name}
-                          to={subLink.path}
-                          onClick={() => setMenuOpen(false)} // Close menu when sub-link is clicked
-                          className="dropdown-item"
-                        >
-                          {subLink.name}
-                        </Link>
-                      ))}
-                    </motion.div>
-                  )}
+                  {item.subLinks &&
+                    ((item.name === 'About Us' && mobileAboutOpen) ||
+                      (item.name === 'Gallery' && mobileGalleryOpen) ||
+                      (item.name === 'Departments' && mobileDepartmentsOpen) ||
+                      (item.name === 'Payments' && mobilePaymentsOpen) ||
+                      (item.name === 'Projects' && mobileProjectsOpen) ||
+                      (item.name === 'Get Connected' && mobileConnectedOpen) ||
+                      (item.name === 'Contact Us' && mobileContactOpen)) && (
+                      <motion.div
+                        className="dropdown-menu" // This is for mobile, can retain its existing behavior
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {item.subLinks.map((subLink) => (
+                          <Link
+                            key={subLink.name}
+                            to={subLink.path}
+                            onClick={() => setMenuOpen(false)} // Close menu when sub-link is clicked
+                            className="dropdown-item"
+                          >
+                            {subLink.name}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
                 </div>
               ))}
             </nav>
@@ -237,15 +236,14 @@ const NavigationMenu = ({ menuOpen, setMenuOpen }) => {
         )}
       </AnimatePresence>
 
-      {/* Desktop Navigation */}
+      {/* Desktop Navigation - IMPORTANT: This should be in the normal document flow */}
       <nav className="nav-container">
         <div className="nav-inner">
           {navItems.map((item) => (
-            <div key={item.name} className="group relative">
+            <div key={item.name} className="group desktop-nav-item"> {/* Renamed for clarity */}
               {item.isLink ? (
                 <Link
                   to={item.path}
-                  // Checks if the current path starts with the item's path for 'active' state
                   className={`nav-link ${location.pathname.startsWith(item.path) && item.path !== '/' ? 'active' : (location.pathname === '/' && item.path === '/') ? 'active' : ''}`}
                 >
                   <span className="nav-icon">{item.icon}</span>
@@ -254,14 +252,13 @@ const NavigationMenu = ({ menuOpen, setMenuOpen }) => {
               ) : (
                 <button
                   onClick={() => toggleDropdown(item.name)}
-                  // Checks if the current path starts with the item's path for 'active' state for dropdown parent
                   className={`nav-link ${location.pathname.startsWith(item.path) ? 'active' : ''}`}
                 >
                   <span className="nav-icon">{item.icon}</span>
                   <span>{item.name}</span>
                   {item.subLinks && (
                     <FiChevronDown className={`ml-1 transition-transform duration-300 ${
-                      (item.name === 'About Us' && aboutOpen) || 
+                      (item.name === 'About Us' && aboutOpen) ||
                       (item.name === 'Gallery' && galleryOpen) ||
                       (item.name === 'Departments' && departmentsOpen) ||
                       (item.name === 'Payments' && paymentsOpen) ||
@@ -272,32 +269,36 @@ const NavigationMenu = ({ menuOpen, setMenuOpen }) => {
                   )}
                 </button>
               )}
-              {item.subLinks && 
-                ((item.name === 'About Us' && aboutOpen) || 
-                 (item.name === 'Gallery' && galleryOpen) ||
-                 (item.name === 'Departments' && departmentsOpen) ||
-                 (item.name === 'Payments' && paymentsOpen) ||
-                 (item.name === 'Projects' && projectsOpen) ||
-                 (item.name === 'Get Connected' && connectedOpen) ||
-                 (item.name === 'Contact Us' && contactOpen)) && (
-                <motion.div
-                  className="absolute top-full left-0 mt-1 w-56 dropdown-menu"
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
-                >
-                  {item.subLinks.map((subLink) => (
-                    <Link
-                      key={subLink.name}
-                      to={subLink.path}
-                      className="dropdown-item"
-                    >
-                      {subLink.name}
-                    </Link>
-                  ))}
-                </motion.div>
-              )}
+              {item.subLinks &&
+                ((item.name === 'About Us' && aboutOpen) ||
+                  (item.name === 'Gallery' && galleryOpen) ||
+                  (item.name === 'Departments' && departmentsOpen) ||
+                  (item.name === 'Payments' && paymentsOpen) ||
+                  (item.name === 'Projects' && projectsOpen) ||
+                  (item.name === 'Get Connected' && connectedOpen) ||
+                  (item.name === 'Contact Us' && contactOpen)) && (
+                  <motion.div
+                    // THIS IS THE CRITICAL CHANGE for desktop dropdowns
+                    // We remove `position: absolute` by not applying a class that sets it
+                    // and let Framer Motion animate `height` in the normal flow.
+                    className="desktop-dropdown-content" // NEW class for desktop dropdown content
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                  >
+                    {item.subLinks.map((subLink) => (
+                      <Link
+                        key={subLink.name}
+                        to={subLink.path}
+                        className="dropdown-item"
+                        onClick={() => toggleDropdown(item.name)} // Close dropdown after clicking sub-link
+                      >
+                        {subLink.name}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
             </div>
           ))}
         </div>

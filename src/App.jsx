@@ -11,7 +11,7 @@ import ChatBot from './Components/ChatBot';
 import Home from './pages/Home';
 
 // Pages - Nested imports for pages that are now directories with sub-components
-// About Us Sub-pages (already correctly structured)
+// About Us Sub-pages
 import Vision from './pages/AboutUS/Vision';
 import Mission from './pages/AboutUS/Mission';
 import OurLeadership from './pages/AboutUS/OurLeadership';
@@ -21,7 +21,7 @@ import Provinces from './pages/AboutUS/Provinces';
 
 // Gallery Sub-pages
 import ServicePictures from './pages/Gallery/ServicePictures';
-import GalleryVideos from './pages/Gallery/Videos'; // Renamed to avoid conflict if you had a top-level Gallery component
+import GalleryVideos from './pages/Gallery/Videos';
 
 // Departments Sub-pages
 import LadiesDepartment from './pages/Departments/LadiesDepartment';
@@ -46,7 +46,7 @@ import YearPlanner from './pages/Projects/YearPlanner';
 import PrayerRequests from './pages/GetConnected/PrayerRequests';
 import ChatWithPresident from './pages/GetConnected/ChatWithPresident';
 import ChatWithSecretary from './pages/GetConnected/ChatWithSecretary';
-import GeneralConnection from './pages/GetConnected/General'; // Renamed to avoid conflict if you had a top-level General component
+import GeneralConnection from './pages/GetConnected/General';
 
 // Contact Us Sub-pages
 import ContactInformation from './pages/ContactUs/ContactInformation';
@@ -59,24 +59,34 @@ function App() {
   return (
     <div className={`min-h-screen flex flex-col ${darkMode ? 'dark bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-900'}`}>
       <Router>
-        <Header 
-          darkMode={darkMode} 
-          setDarkMode={setDarkMode} 
+        {/* The Header is currently hidden on desktop via CSS, so it's only for mobile. */}
+        <Header
+          darkMode={darkMode}
+          setDarkMode={setDarkMode}
           menuOpen={menuOpen}
           setMenuOpen={setMenuOpen}
         />
-        
-        <NavigationMenu 
-          menuOpen={menuOpen} 
-          setMenuOpen={setMenuOpen} 
+
+        {/* NavigationMenu for both desktop (in-flow) and mobile (fixed) */}
+        <NavigationMenu
+          menuOpen={menuOpen}
+          setMenuOpen={setMenuOpen}
           darkMode={darkMode}
         />
-        
-        <main className="flex-grow">
+
+        {/*
+          IMPORTANT: The 'main-content-padding' class is crucial.
+          It adds top padding to ensure your page content starts below the navigation bar.
+          Adjust 'pt-16' (which means padding-top: 4rem or 64px) based on the exact
+          height of your desktop navigation bar when it's closed.
+          You might need to inspect it in your browser's dev tools to get an accurate height.
+          If your nav bar is taller, increase this value (e.g., pt-20, pt-24).
+        */}
+        <main className="flex-grow pt-16 md:pt-24"> {/* Added padding for desktop and mobile */}
           <Routes>
             <Route path="/" element={<Home />} />
 
-            {/* About Us Routes (already correctly structured) */}
+            {/* About Us Routes */}
             <Route path="/about-us/vision" element={<Vision />} />
             <Route path="/about-us/mission" element={<Mission />} />
             <Route path="/about-us/our-leadership" element={<OurLeadership />} />
@@ -120,7 +130,7 @@ function App() {
             {/* <Route path="*" element={<NotFoundPage />} /> */}
           </Routes>
         </main>
-        
+
         <Footer darkMode={darkMode} />
         <ChatBot darkMode={darkMode} />
       </Router>
