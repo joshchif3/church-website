@@ -1,0 +1,481 @@
+/* src/styles/DepartmentsStyles/LadiesDepartment.css */
+
+.ladies-department-page {
+  background-color: #f9fafb;
+  color: #1f2937;
+  min-height: 100vh;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Dark mode styles */
+.dark .ladies-department-page {
+  background-color: #1a202c;
+  color: #e2e8f0;
+}
+
+.ladies-department-container {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- Banner Section (No changes here from previous) --- */
+.ladies-department-banner-section {
+  width: 100%;
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .ladies-department-banner-section {
+    height: 200px;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ladies-department-banner-section {
+    height: 160px;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.ladies-department-banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.ladies-department-banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ladies-department-banner-text {
+  font-size: 4rem;
+  font-weight: 900;
+  color: white;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  z-index: 3;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+@media (max-width: 768px) {
+  .ladies-department-banner-text {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ladies-department-banner-text {
+    font-size: 2.2rem;
+  }
+}
+
+/* --- Content Section (No changes here from previous) --- */
+.ladies-department-content {
+  width: 100%;
+  max-width: 900px;
+  padding: 2rem 1.5rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  line-height: 1.7;
+  margin-bottom: 3rem;
+}
+
+.dark .ladies-department-content {
+  background-color: #2d3748;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.section-subtitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #ce3a27;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.dark .section-subtitle {
+  color: #4f46e5;
+}
+
+.section-subtitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #ce3a27, #4f46e5);
+  border-radius: 2px;
+}
+
+.section-paragraph {
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+  color: #374151;
+}
+
+.dark .section-paragraph {
+  color: #cbd5e0;
+}
+
+.scripture-quote {
+  background-color: #eff6ff;
+  border-left: 5px solid #3b82f6;
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: #1e40af;
+  border-radius: 4px;
+}
+
+.dark .scripture-quote {
+  background-color: #1a202c;
+  border-left-color: #60a5fa;
+  color: #a7ccf6;
+}
+
+.scripture-quote p {
+  margin-bottom: 0.5rem;
+}
+
+.scripture-quote .quote-source {
+  text-align: right;
+  font-size: 0.95rem;
+  font-style: normal;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.dark .scripture-quote .quote-source {
+  color: #93c5fd;
+}
+
+.section-heading {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #1f2937;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+
+.dark .section-heading {
+  color: #e2e8f0;
+  border-bottom-color: #4a5568;
+}
+
+.committee-list,
+.activities-list,
+.aims-list {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.committee-list li,
+.activities-list li,
+.aims-list li {
+  font-size: 1.05rem;
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+  color: #374151;
+}
+
+.dark .committee-list li,
+.dark .activities-list li,
+.dark .aims-list li {
+  color: #cbd5e0;
+}
+
+.committee-list li::before,
+.activities-list li::before,
+.aims-list li::before {
+  content: "•";
+  color: #ce3a27;
+  font-size: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: -0.1rem;
+}
+
+.dark .committee-list li::before,
+.dark .activities-list li::before,
+.dark .aims-list li::before {
+  color: #4f46e5;
+}
+
+.activities-list li strong {
+  color: #1f2937;
+}
+.dark .activities-list li strong {
+  color: #e2e8f0;
+}
+
+
+/* --- Leader Profile Section --- */
+.leader-profile-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1.5rem; /* Padding around the card */
+  margin-top: 3rem; /* Space from content above */
+  margin-bottom: 4rem; /* Space before footer/next section */
+}
+
+.leader-card {
+  width: 100%;
+  max-width: 650px; /* Adjust max width of the card */
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  overflow: hidden; /* Important for border-radius and inner elements */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.dark .leader-card {
+  background-color: #2d3748;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.leader-card-header {
+  background-color: #007bff; /* A prominent blue for the header */
+  color: white;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 2; /* Ensure it's above other elements if needed */
+}
+
+.dark .leader-card-header {
+  background-color: #4f46e5; /* Different blue for dark mode */
+}
+
+.church-name {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.leader-card-content {
+  display: flex;
+  flex-direction: row; /* Default: row for larger screens */
+  padding: 1.5rem;
+  position: relative;
+  z-index: 1; /* Below header */
+  background:
+    linear-gradient(to bottom right,
+      #f0f0f0 0%, #f0f0f0 50%, /* Light grey */
+      transparent 50.1%, transparent 100% /* Transparent part */
+    ),
+    #ffffff; /* Background for the transparent part if needed */
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  /* This gradient attempts to create a diagonal split, but might need fine-tuning */
+}
+
+.dark .leader-card-content {
+  background:
+    linear-gradient(to bottom right,
+      #3f4b5d 0%, #3f4b5d 50%, /* Dark grey */
+      transparent 50.1%, transparent 100%
+    ),
+    #2d3748;
+}
+
+.contact-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  padding-right: 1.5rem; /* Space between info and image */
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #374151;
+}
+
+.dark .contact-item {
+  color: #cbd5e0;
+}
+
+.contact-item a {
+  color: #3b82f6;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.dark .contact-item a {
+  color: #93c5fd;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+  color: #2563eb;
+}
+
+.dark .contact-item a:hover {
+  color: #60a5fa;
+}
+
+.contact-icon {
+  color: #ce3a27; /* Accent color for icons */
+  margin-right: 0.75rem;
+  font-size: 1.2rem;
+}
+
+.dark .contact-icon {
+  color: #4f46e5;
+}
+
+.leader-image-wrapper {
+  flex-shrink: 0; /* Prevent image from shrinking */
+  width: 180px; /* Fixed width for the image container */
+  height: 180px; /* Fixed height for consistency */
+  border-radius: 50%; /* Circular image */
+  overflow: hidden;
+  border: 4px solid #ce3a27; /* Accent border around image */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  display: flex; /* For centering image if needed */
+  justify-content: center;
+  align-items: center;
+}
+
+.dark .leader-image-wrapper {
+  border-color: #4f46e5;
+}
+
+.leader-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure image covers the circle */
+  display: block;
+}
+
+.leader-card-footer {
+  background-color: #007bff; /* Same blue as header */
+  color: white;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-weight: 500;
+  border-bottom-left-radius: 15px; /* Match card border-radius */
+  border-bottom-right-radius: 15px;
+}
+
+.dark .leader-card-footer {
+  background-color: #4f46e5;
+}
+
+.leader-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.leader-title {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Responsive adjustments for Leader Card */
+@media (max-width: 600px) {
+  .leader-card {
+    max-width: 100%; /* Allow card to take full width on smaller screens */
+    border-radius: 10px;
+  }
+
+  .leader-card-content {
+    flex-direction: column; /* Stack contact info and image */
+    align-items: center;
+    padding: 1rem;
+    background: none; /* Remove diagonal background for simple stacking */
+    background-color: #ffffff; /* Use solid background */
+  }
+
+  .dark .leader-card-content {
+    background-color: #2d3748;
+  }
+
+  .contact-info {
+    padding-right: 0;
+    margin-bottom: 1.5rem; /* Space between info and image */
+    width: 100%; /* Full width for contact info */
+    text-align: center;
+  }
+
+  .contact-item {
+    justify-content: center; /* Center contact items */
+  }
+
+  .leader-image-wrapper {
+    width: 150px; /* Smaller image on mobile */
+    height: 150px;
+    margin-bottom: 1.5rem; /* Space below image */
+  }
+
+  .leader-card-header,
+  .leader-card-footer {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+  }
+
+  .leader-name {
+    font-size: 1.1rem;
+  }
+  .leader-title {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .leader-image-wrapper {
+    width: 120px;
+    height: 120px;
+  }
+}
