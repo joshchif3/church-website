@@ -24,7 +24,7 @@
   align-items: center;
 }
 
-/* --- Banner Section (No changes here from previous) --- */
+/* --- Banner Section --- */
 .ladies-department-banner-section {
   width: 100%;
   position: relative;
@@ -95,7 +95,7 @@
   }
 }
 
-/* --- Content Section (No changes here from previous) --- */
+/* --- Content Section --- */
 .ladies-department-content {
   width: 100%;
   max-width: 900px;
@@ -245,23 +245,48 @@
 }
 
 
-/* --- Leader Profile Section --- */
-.leader-profile-section {
+/* --- Leader Profile Section (for LadiesDepartment.jsx only) --- */
+
+/* This targets the div that contains the image */
+.leader-image-section {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 2rem 1.5rem; /* Padding around the card */
+  padding: 2rem 1.5rem; /* Padding around the image section */
   margin-top: 3rem; /* Space from content above */
   margin-bottom: 4rem; /* Space before footer/next section */
 }
 
+/* This targets the actual image element within the LadiesDepartment page */
+.leader-full-image {
+  width: 180px; /* Fixed width for the image */
+  height: 180px; /* Fixed height for consistency */
+  border-radius: 50%; /* Circular image */
+  object-fit: cover; /* Ensure image covers the circle */
+  display: block;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Keep a subtle shadow */
+  /* REMOVED THE RED BORDER */
+  border: none; /* Explicitly remove any border */
+  outline: none; /* Ensure no outline */
+}
+
+/* No specific dark mode border-color needed if border is 'none' */
+.dark .leader-full-image {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Adjust shadow for dark mode */
+}
+
+
+/* --- Removed unused styles from the previous Leader Card structure --- */
+/* The following styles were for a different layout in LadiesDepartment.jsx
+   and are no longer needed, as the component now uses .leader-full-image */
+/*
 .leader-card {
   width: 100%;
-  max-width: 650px; /* Adjust max width of the card */
+  max-width: 650px;
   background-color: #fff;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  overflow: hidden; /* Important for border-radius and inner elements */
+  overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -273,7 +298,7 @@
 }
 
 .leader-card-header {
-  background-color: #007bff; /* A prominent blue for the header */
+  background-color: #007bff;
   color: white;
   padding: 1rem 1.5rem;
   text-align: center;
@@ -284,11 +309,11 @@
   align-items: center;
   gap: 0.5rem;
   position: relative;
-  z-index: 2; /* Ensure it's above other elements if needed */
+  z-index: 2;
 }
 
 .dark .leader-card-header {
-  background-color: #4f46e5; /* Different blue for dark mode */
+  background-color: #4f46e5;
 }
 
 .church-name {
@@ -298,25 +323,24 @@
 
 .leader-card-content {
   display: flex;
-  flex-direction: row; /* Default: row for larger screens */
+  flex-direction: row;
   padding: 1.5rem;
   position: relative;
-  z-index: 1; /* Below header */
+  z-index: 1;
   background:
     linear-gradient(to bottom right,
-      #f0f0f0 0%, #f0f0f0 50%, /* Light grey */
-      transparent 50.1%, transparent 100% /* Transparent part */
+      #f0f0f0 0%, #f0f0f0 50%,
+      transparent 50.1%, transparent 100%
     ),
-    #ffffff; /* Background for the transparent part if needed */
+    #ffffff;
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  /* This gradient attempts to create a diagonal split, but might need fine-tuning */
 }
 
 .dark .leader-card-content {
   background:
     linear-gradient(to bottom right,
-      #3f4b5d 0%, #3f4b5d 50%, /* Dark grey */
+      #3f4b5d 0%, #3f4b5d 50%,
       transparent 50.1%, transparent 100%
     ),
     #2d3748;
@@ -328,7 +352,7 @@
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
-  padding-right: 1.5rem; /* Space between info and image */
+  padding-right: 1.5rem;
 }
 
 .contact-item {
@@ -348,8 +372,8 @@
   transition: color 0.2s ease;
 }
 
-.dark .contact-item a {
-  color: #93c5fd;
+.dark .contact-item a:hover {
+  color: #60a5fa;
 }
 
 .contact-item a:hover {
@@ -357,12 +381,8 @@
   color: #2563eb;
 }
 
-.dark .contact-item a:hover {
-  color: #60a5fa;
-}
-
 .contact-icon {
-  color: #ce3a27; /* Accent color for icons */
+  color: #ce3a27;
   margin-right: 0.75rem;
   font-size: 1.2rem;
 }
@@ -370,16 +390,19 @@
 .dark .contact-icon {
   color: #4f46e5;
 }
+*/
 
+/* This was the original problematic style. It's now commented out below. */
+/*
 .leader-image-wrapper {
-  flex-shrink: 0; /* Prevent image from shrinking */
-  width: 180px; /* Fixed width for the image container */
-  height: 180px; /* Fixed height for consistency */
-  border-radius: 50%; /* Circular image */
+  flex-shrink: 0;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
   overflow: hidden;
-  border: 4px solid #ce3a27; /* Accent border around image */
+  border: 4px solid #ce3a27;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  display: flex; /* For centering image if needed */
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -391,12 +414,13 @@
 .leader-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensure image covers the circle */
+  object-fit: cover;
   display: block;
 }
-
+*/
+/*
 .leader-card-footer {
-  background-color: #007bff; /* Same blue as header */
+  background-color: #007bff;
   color: white;
   padding: 1rem 1.5rem;
   text-align: center;
@@ -404,7 +428,7 @@
   flex-direction: column;
   gap: 0.5rem;
   font-weight: 500;
-  border-bottom-left-radius: 15px; /* Match card border-radius */
+  border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
 }
 
@@ -422,20 +446,33 @@
   font-size: 0.9rem;
   opacity: 0.9;
 }
+*/
 
 /* Responsive adjustments for Leader Card */
 @media (max-width: 600px) {
+  /* No more .leader-card, applying styles directly to .leader-full-image */
+  .leader-full-image {
+    width: 150px; /* Smaller image on mobile */
+    height: 150px;
+    margin-bottom: 1.5rem; /* Space below image */
+  }
+
+  /* The following media queries were for .leader-card and are no longer relevant
+     as the component's structure for the leader image has changed.
+     I've left them commented out for reference if you ever revert the structure.
+  */
+  /*
   .leader-card {
-    max-width: 100%; /* Allow card to take full width on smaller screens */
+    max-width: 100%;
     border-radius: 10px;
   }
 
   .leader-card-content {
-    flex-direction: column; /* Stack contact info and image */
+    flex-direction: column;
     align-items: center;
     padding: 1rem;
-    background: none; /* Remove diagonal background for simple stacking */
-    background-color: #ffffff; /* Use solid background */
+    background: none;
+    background-color: #ffffff;
   }
 
   .dark .leader-card-content {
@@ -444,19 +481,13 @@
 
   .contact-info {
     padding-right: 0;
-    margin-bottom: 1.5rem; /* Space between info and image */
-    width: 100%; /* Full width for contact info */
+    margin-bottom: 1.5rem;
+    width: 100%;
     text-align: center;
   }
 
   .contact-item {
-    justify-content: center; /* Center contact items */
-  }
-
-  .leader-image-wrapper {
-    width: 150px; /* Smaller image on mobile */
-    height: 150px;
-    margin-bottom: 1.5rem; /* Space below image */
+    justify-content: center;
   }
 
   .leader-card-header,
@@ -471,10 +502,11 @@
   .leader-title {
     font-size: 0.8rem;
   }
+  */
 }
 
 @media (max-width: 400px) {
-  .leader-image-wrapper {
+  .leader-full-image {
     width: 120px;
     height: 120px;
   }

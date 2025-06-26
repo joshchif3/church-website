@@ -1,24 +1,41 @@
 import React, { useState } from 'react';
 import leadershipBannerBg from '../../assets/leadership-banner-bg.png';
-import { FiUsers, FiChevronDown, FiChevronUp } from 'react-icons/fi';
+import { FiUsers, FiChevronDown, FiChevronUp, FiX } from 'react-icons/fi'; // Import FiX for the close button
+import { motion, AnimatePresence } from 'framer-motion'; // Import motion and AnimatePresence for animations
 
 // Import leader images
 import presidentImage from '../../assets/leaders/President.jpg';
 import ladiesLeaderImage from '../../assets/leaders/Ladies_leader.jpg';
 import ladiesTreasurerImage from '../../assets/leaders/National-ladies-treasurer.jpg';
-import childrenMinistryImage from '../../assets/leaders/CHILDREN_MINISTRY.png'; // Make sure this is the correct filename
+import childrenMinistryImage from '../../assets/leaders/CHILDREN_MINISTRY.png';
 import treasurerImage from '../../assets/leaders/treasure.jpg';
+// Add any other leader images you have here, e.g.:
+// import otherLeaderImage1 from '../../assets/leaders/OtherLeader1.jpg';
+// import otherLeaderImage2 from '../../assets/leaders/OtherLeader2.jpg';
+
 
 import '../../styles/AboutStyles/OurLeadership.css';
 
 const OurLeadership = () => {
   const [openSections, setOpenSections] = useState({});
+  const [selectedImage, setSelectedImage] = useState(null); // State to hold the image to display in modal
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
 
   const toggleSection = (sectionName) => {
     setOpenSections((prev) => ({
       ...prev,
       [sectionName]: !prev[sectionName],
     }));
+  };
+
+  const handleImageClick = (image) => {
+    setSelectedImage(image);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedImage(null);
   };
 
   const leadershipData = {
@@ -103,7 +120,10 @@ const OurLeadership = () => {
     { src: ladiesLeaderImage, alt: "National Ladies Leader", caption: "Mrs. Madawo - National Ladies Leader" },
     { src: ladiesTreasurerImage, alt: "National Ladies Treasurer", caption: "Mrs. Katakwa - National Ladies Treasurer" },
     { src: childrenMinistryImage, alt: "National Children's Dep. Superintendent", caption: "Pastor Mupereki - Children's Dept. Supt." },
-    { src: treasurerImage, alt: "Treasurer General", caption: "Elder G Chikuni - Interim Treasurer General" },
+    { src: treasurerImage, alt: "Elder G Chikuni: Interim Treasurer General", caption: "Elder G Chikuni - Interim Treasurer General" },
+    // Add other leaders with their respective images and captions
+    // { src: otherLeaderImage1, alt: "Description of Other Leader 1", caption: "Other Leader 1 - Role" },
+    // { src: otherLeaderImage2, alt: "Description of Other Leader 2", caption: "Other Leader 2 - Role" },
   ];
 
   return (
@@ -115,10 +135,9 @@ const OurLeadership = () => {
         style={{ backgroundImage: `url(${leadershipBannerBg})` }}
       >
         <div className="absolute inset-0 bg-black opacity-30"></div>
-        {/* Changed text-center to text-left and justify-center to justify-start */}
         <div className="relative z-10 text-left px-4">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">Our Leadership</h1>
-          <div className="flex items-center justify-start"> {/* Changed justify-content */}
+          <div className="flex items-center justify-start">
             <FiUsers className="text-white text-3xl mr-3" />
             <p className="text-xl md:text-2xl text-white opacity-90">Guiding with Vision and Purpose</p>
           </div>
@@ -157,12 +176,16 @@ const OurLeadership = () => {
           ))}
         </div>
 
-        {/* Leader Pictures Section - Now with rectangular images */}
+        {/* Leader Pictures Section */}
         <h2 className="section-header">KEY LEADERSHIP</h2>
         <div className="leader-pictures-container">
           <div className="leader-pictures-grid">
             {leaderImages.map((leader, index) => (
-              <div key={index} className="leader-image-wrapper">
+              <div
+                key={index}
+                className="leader-image-wrapper"
+                onClick={() => handleImageClick(leader)} // Add click handler
+              >
                 <img
                   src={leader.src}
                   alt={leader.alt}
@@ -174,6 +197,35 @@ const OurLeadership = () => {
           </div>
         </div>
       </div>
+
+      {/* Image Modal (with Framer Motion for animation) */}
+      <AnimatePresence>
+        {isModalOpen && selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="image-modal-overlay"
+            onClick={handleCloseModal}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="image-modal-content"
+              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside modal content
+            >
+              <button className="image-modal-close" onClick={handleCloseModal}>
+                <FiX />
+              </button>
+              <img src={selectedImage.src} alt={selectedImage.alt} />
+              <p className="leader-caption text-center">{selectedImage.caption}</p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

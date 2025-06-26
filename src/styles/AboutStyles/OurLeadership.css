@@ -117,50 +117,119 @@
 /* Leader images grid */
 .leader-pictures-container {
   width: 100%;
-  padding: 0 1rem; /* Added padding to prevent content from touching edges */
+  padding: 0 1rem;
 }
 
 .leader-pictures-grid {
   display: grid;
-  /* --- Leader Pictures Width/Size Adjustments --- */
-  /* Increased minmax base to make images wider on larger screens */
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Even smaller minmax */
+  gap: 1rem; /* Smaller gap */
   justify-content: center;
   padding: 1rem 0;
   margin: 0 auto;
-  max-width: 1200px; /* Increased max-width for the overall grid */
+  max-width: 900px; /* Slightly reduced max-width */
 }
 
 .leader-image-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem; /* Even smaller gap */
   text-align: center;
 }
 
 .leader-image {
-  width: 100%;
-  height: 280px; /* Increased height to match increased width base, ensuring full display */
-  object-fit: cover; /* Ensures image covers the area, potentially cropping edges if aspect ratio doesn't match */
-  border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  width: 120px; /* Smaller fixed width */
+  height: 150px; /* Smaller fixed height */
+  object-fit: contain; /* Ensures whole image shows, adds letterboxing if aspect ratio doesn't match */
+  border-radius: 4px; /* Slightly less rounded */
+  /* Removed border and box-shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer; /* Indicate it's clickable */
+  background-color: #fff; /* Background for letterboxing if image doesn't fill */
+}
+
+.dark .leader-image {
+  background-color: #374151; /* Dark background for letterboxing in dark mode */
 }
 
 .leader-image:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
+  /* Added a subtle hover shadow for click indication */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dark .leader-image:hover {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .leader-caption {
-  font-weight: 600;
+  font-weight: 500; /* Slightly less bold */
   color: var(--dark-text);
-  font-size: 1rem;
+  font-size: 0.85rem; /* Even smaller caption */
 }
 
 .dark .leader-caption {
+  color: var(--light-text);
+}
+
+/* Modal for full image view */
+.image-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8); /* Dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's on top */
+  cursor: pointer; /* Indicate it's clickable to close */
+}
+
+.image-modal-content {
+  position: relative;
+  background: white; /* Background for the modal itself */
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  max-width: 90vw; /* Max width relative to viewport */
+  max-height: 90vh; /* Max height relative to viewport */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--dark-text);
+}
+
+.dark .image-modal-content {
+  background: var(--dark-bg);
+  color: var(--light-text);
+}
+
+.image-modal-content img {
+  max-width: 100%;
+  max-height: 80vh; /* Image itself takes up max 80% of viewport height */
+  height: auto;
+  object-fit: contain; /* Ensure full image is visible */
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.image-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 2.5rem; /* Larger close button */
+  color: white;
+  cursor: pointer;
+  z-index: 1001; /* Above other modal content */
+  text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.dark .image-modal-close {
   color: var(--light-text);
 }
 
@@ -168,26 +237,31 @@
 @media (max-width: 1024px) {
   .leadership-banner {
     height: 350px;
-    padding-left: 5%; /* Adjust left padding for medium screens */
+    padding-left: 5%;
   }
   .leader-pictures-grid {
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Adjusted minmax for medium screens */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Smaller on medium screens */
+    gap: 0.75rem;
+    max-width: 800px;
+  }
+  .leader-image {
+    width: 100px;
+    height: 130px;
   }
 }
 
 @media (max-width: 768px) {
   .leadership-banner {
     height: 300px;
-    padding-left: 3%; /* Adjust left padding for tablets */
+    padding-left: 3%;
   }
-  
   .leader-pictures-grid {
-    grid-template-columns: repeat(2, 1fr); /* Two columns for tablet view */
-    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr); /* Two columns on tablet */
+    gap: 0.5rem;
   }
-  
   .leader-image {
-    height: 220px; /* Adjusted height for tablets */
+    width: 100%; /* Fill container */
+    height: 160px; /* Adjust height */
   }
   .section-header {
     font-size: 1.8rem;
@@ -197,23 +271,29 @@
 @media (max-width: 480px) {
   .leadership-banner {
     height: 250px;
-    padding-left: 2%; /* Adjust left padding for mobile */
+    padding-left: 2%;
   }
-  
   .leader-pictures-grid {
-    grid-template-columns: 1fr; /* Single column for mobile view */
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 0.75rem;
   }
-  
   .section-header {
     font-size: 1.6rem;
   }
-  
   .accordion-header {
     font-size: 1rem;
     padding: 1rem;
   }
-
   .leader-image {
-    height: 200px; /* Adjusted image height for smaller phones */
+    width: 100%;
+    height: 180px; /* Adjust height for single column */
+  }
+  .image-modal-content {
+    padding: 1rem;
+  }
+  .image-modal-close {
+    font-size: 2rem;
+    top: 5px;
+    right: 5px;
   }
 }

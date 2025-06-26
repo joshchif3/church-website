@@ -25,7 +25,9 @@ const LadiesDepartment = () => {
             className="ladies-department-banner-image"
           />
           <div className="ladies-department-banner-overlay">
-           
+            {/* You can add text here if needed, like:
+            <h1 className="ladies-department-banner-text">Ladies Department</h1>
+            */}
           </div>
         </div>
 
@@ -36,7 +38,7 @@ const LadiesDepartment = () => {
             The AFM in Zimbabwe Ladies Ministry, commonly referred to as the Ladies Department, has been serving for over 100 years, supporting and sustaining families and contributing significantly to church projects.
           </p>
           <blockquote className="scripture-quote">
-            <p>“Who can find a virtuous woman? For her price is far above rubies. The heart of her husband doth safely trust in her, so that she shall have no need of spoil. She will do him good and not evil all the days of her life. She seeketh wool, and flax, and worketh willingly with her hands.”</p>
+            <p>“Who can find a virtuous woman? For her price is far above rubies. The heart of her husband doth safely trust in her, so that he shall have no need of spoil. She will do him good and not evil all the days of her life. She seeketh wool, and flax, and worketh willingly with her hands.”</p>
             <p className="quote-source">– Proverbs 31:10-13 (KJV)</p>
           </blockquote>
 
