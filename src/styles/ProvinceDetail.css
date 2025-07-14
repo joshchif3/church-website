@@ -1,0 +1,320 @@
+/* src/Components/styles/ProvinceDetail.css */
+
+.province-detail-page {
+  background-color: #f9fafb; /* Light background for the page */
+  color: #1f2937; /* Dark text color */
+  min-height: 100vh;
+  padding: 0; /* Remove default padding, container handles it */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align content to the top */
+}
+
+/* Dark mode styles */
+.dark .province-detail-page {
+  background-color: #1a202c;
+  color: #e2e8f0;
+}
+
+.province-detail-container {
+  width: 100%;
+  max-width: 900px; /* Consistent with other content sections */
+  padding: 2.5rem 1.5rem; /* Padding inside the container */
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  margin-top: 3rem; /* Space from top, assuming header/navbar */
+  margin-bottom: 4rem; /* Space before potential footer */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dark .province-detail-container {
+  background-color: #2d3748;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.province-detail-error {
+  color: #e53e3e;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.province-detail-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #ce3a27; /* Accent red color */
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.dark .province-detail-title {
+  color: #4f46e5; /* Accent blue for dark mode */
+}
+
+.province-detail-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px; /* Underline for title */
+  height: 4px;
+  background: linear-gradient(90deg, #ce3a27, #4f46e5);
+  border-radius: 2px;
+}
+
+.province-detail-content-wrapper {
+  display: flex;
+  flex-direction: row; /* Default: leader image on left, info on right */
+  gap: 2rem; /* Space between the two columns */
+  width: 100%;
+  align-items: flex-start; /* Align content to the top of each column */
+}
+
+.province-detail-leader-section {
+  flex: 0 0 300px; /* Fixed width for the leader section on larger screens */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 1.5rem; /* Space before the about section */
+  border-right: 1px solid #e2e8f0; /* Subtle separator line */
+}
+
+.dark .province-detail-leader-section {
+  border-right-color: #4a5568;
+}
+
+.province-overseer-label {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+  text-align: center; /* Center the label */
+  width: 100%; /* Ensure it takes full width for centering */
+}
+
+.dark .province-overseer-label {
+  color: #e2e8f0;
+}
+
+.province-overseer-name {
+  color: #ce3a27; /* Accent color for the name */
+}
+
+.dark .province-overseer-name {
+  color: #4f46e5;
+}
+
+.province-leader-image {
+  max-width: 100%; /* Ensure image doesn't overflow its container */
+  height: auto; /* Let height adjust automatically to maintain aspect ratio */
+  object-fit: contain; /* IMPORTANT: Ensures the entire image is visible without cropping */
+  border-radius: 12px; /* Slightly rounded corners for the image */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 0.5rem; /* Space below the label */
+  max-height: 250px; /* Added max-height to control overall size */
+  width: 250px; /* Keep a width to ensure a consistent area for the image, may have empty space on sides */
+}
+
+
+.dark .province-leader-image {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.province-overseer-bio {
+  margin-top: 2rem;
+  width: 100%;
+  text-align: left; /* Align bio text to left within its container */
+}
+
+.province-bio-heading {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+  text-align: center; /* Center heading for bio */
+}
+
+.dark .province-bio-heading {
+  color: #e2e8f0;
+  border-bottom-color: #4a5568;
+}
+
+.province-bio-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.province-bio-item {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.dark .province-bio-item {
+  color: #cbd5e0;
+}
+
+.province-detail-about-section {
+  flex: 1; /* Takes remaining space */
+  padding-left: 1.5rem; /* Space after the leader section */
+}
+
+.province-about-heading {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1.2rem;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+
+.dark .province-about-heading {
+  color: #e2e8f0;
+  border-bottom-color: #4a5568;
+}
+
+.province-about-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.province-about-item {
+  font-size: 1.05rem;
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+  color: #374151;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.dark .province-about-item {
+  color: #cbd5e0;
+}
+
+.province-about-item::before {
+  content: "•"; /* Bullet point */
+  color: #ce3a27; /* Red accent for bullet */
+  font-size: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: -0.1rem;
+}
+
+.dark .province-about-item::before {
+  color: #4f46e5; /* Blue accent for dark mode bullet */
+}
+
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 960px) {
+  .province-detail-container {
+    max-width: 760px;
+    padding: 2rem 1rem;
+  }
+  .province-detail-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  .province-detail-leader-section {
+    flex: 0 0 250px; /* Slightly smaller fixed width */
+    padding-right: 1rem;
+  }
+  .province-leader-image {
+    width: 220px; /* Adjust width and max-height for responsiveness */
+    max-height: 220px;
+  }
+  .province-overseer-label {
+    font-size: 1.2rem;
+  }
+  .province-about-heading {
+    font-size: 1.5rem;
+  }
+  .province-about-item {
+    font-size: 1rem;
+  }
+  .province-bio-item {
+    font-size: 0.9rem; /* Smaller bio text on smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .province-detail-content-wrapper {
+    flex-direction: column; /* Stack image and info on smaller screens */
+    align-items: center; /* Center items when stacked */
+    gap: 2.5rem; /* More space between stacked sections */
+  }
+
+  .province-detail-leader-section {
+    flex: none; /* Remove fixed width */
+    width: 100%; /* Take full width */
+    padding-right: 0;
+    border-right: none; /* Remove vertical separator */
+    padding-bottom: 2rem; /* Add space below image section when stacked */
+    border-bottom: 1px solid #e2e8f0; /* Add horizontal separator */
+  }
+  .dark .province-detail-leader-section {
+    border-bottom-color: #4a5568;
+  }
+
+  .province-leader-image {
+    width: 200px; /* Smaller image when stacked */
+    max-height: 200px; /* Adjusted max-height */
+  }
+  .province-overseer-label {
+    margin-bottom: 1rem; /* Adjust margin below label */
+  }
+  .province-detail-about-section {
+    width: 100%; /* Take full width */
+    padding-left: 0;
+  }
+  .province-about-heading {
+    text-align: center; /* Center about heading when stacked */
+  }
+  .province-about-list {
+    padding: 0 0.5rem; /* Slight padding for list on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .province-detail-container {
+    padding: 1.5rem 0.8rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    border-radius: 8px;
+  }
+  .province-detail-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .province-overseer-label {
+    font-size: 1.1rem;
+  }
+  .province-leader-image {
+    width: 160px;
+    max-height: 160px; /* Adjusted max-height */
+  }
+  .province-about-heading {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  .province-about-item {
+    font-size: 0.95rem;
+    padding-left: 1.2rem;
+  }
+  .province-about-item::before {
+    font-size: 1.2rem;
+    top: 0;
+  }
+}

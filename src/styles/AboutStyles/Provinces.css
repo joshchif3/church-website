@@ -1,0 +1,172 @@
+/* src/styles/AboutStyles/Provinces.css */
+
+.provinces-page {
+  background-color: #f9fafb; /* Light background for the page */
+  color: #1f2937; /* Dark text color */
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Dark mode styles */
+.dark .provinces-page {
+  background-color: #1a202c;
+  color: #e2e8f0;
+}
+
+.provinces-header {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+}
+
+.provinces-title {
+  font-size: 2.5rem; /* Larger title as seen in the screenshots */
+  font-weight: 700;
+  color: #ce3a27; /* Red color from your previous designs */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.dark .provinces-title {
+  color: #4f46e5; /* Blue for dark mode */
+}
+
+/* Optional: Add an underline effect to the title like other sections */
+.provinces-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px; /* Adjust width as needed */
+  height: 4px;
+  background: linear-gradient(90deg, #ce3a27, #4f46e5); /* Gradient from other sections */
+  border-radius: 2px;
+}
+
+.provinces-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 2rem; /* Space between cards */
+  width: 100%;
+  max-width: 1000px; /* Max width for the grid container */
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+.province-card {
+  background-color: #ffffff; /* White background for cards */
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Soft shadow */
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.dark .province-card {
+  background-color: #2d3748;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.province-card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+.dark .province-card:hover {
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+}
+
+.province-icon {
+  font-size: 4rem; /* Large icon size */
+  color: #ce3a27; /* Red accent color */
+  margin-bottom: 1rem;
+}
+
+.dark .province-icon {
+  color: #4f46e5; /* Blue accent for dark mode */
+}
+
+.province-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1f2937; /* Dark text for name */
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.dark .province-name {
+  color: #e2e8f0;
+}
+
+.provinces-search-section {
+  margin-top: 2rem;
+  margin-bottom: 4rem; /* Space before footer */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.provinces-search-icon {
+  font-size: 3.5rem; /* Large search icon */
+  color: #ce3a27; /* Red accent color */
+}
+
+.dark .provinces-search-icon {
+  color: #4f46e5; /* Blue accent for dark mode */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .provinces-title {
+    font-size: 2rem;
+  }
+  .provinces-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+  .province-card {
+    padding: 1.5rem;
+  }
+  .province-icon {
+    font-size: 3rem;
+  }
+  .province-name {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .provinces-page {
+    padding: 1rem;
+  }
+  .provinces-title {
+    font-size: 1.8rem;
+  }
+  .provinces-grid {
+    grid-template-columns: 1fr; /* Stack cards on very small screens */
+    gap: 1rem;
+  }
+  .province-card {
+    padding: 1rem;
+  }
+  .province-icon {
+    font-size: 2.5rem;
+  }
+  .province-name {
+    font-size: 0.95rem;
+  }
+  .provinces-search-icon {
+    font-size: 3rem;
+  }
+}

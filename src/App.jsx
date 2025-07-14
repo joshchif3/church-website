@@ -1,3 +1,4 @@
+// src/App.js
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -6,6 +7,7 @@ import Header from './Components/Header';
 import Footer from './Components/Footer';
 import NavigationMenu from './Components/NavigationMenu';
 import ChatBot from './Components/ChatBot';
+import ProvinceDetail from './Components/ProvinceDetail'; // CORRECTED PATH FOR ProvinceDetail
 
 // Pages - Direct Imports for top-level pages that might still be files
 import Home from './pages/Home';
@@ -17,7 +19,8 @@ import Mission from './pages/AboutUS/Mission';
 import OurLeadership from './pages/AboutUS/OurLeadership';
 import History from './pages/AboutUS/History';
 import ConfessionOfFaith from './pages/AboutUS/ConfessionOfFaith';
-import Provinces from './pages/AboutUS/Provinces';
+import Provinces from './pages/AboutUS/Provinces'; // The main grid of provinces
+import provincesData from './data/provincesData'; // Import your province data
 
 // Gallery Sub-pages
 import ServicePictures from './pages/Gallery/ServicePictures';
@@ -59,7 +62,6 @@ function App() {
   return (
     <div className={`min-h-screen flex flex-col ${darkMode ? 'dark bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-900'}`}>
       <Router>
-        {/* The Header is currently hidden on desktop via CSS, so it's only for mobile. */}
         <Header
           darkMode={darkMode}
           setDarkMode={setDarkMode}
@@ -67,22 +69,13 @@ function App() {
           setMenuOpen={setMenuOpen}
         />
 
-        {/* NavigationMenu for both desktop (in-flow) and mobile (fixed) */}
         <NavigationMenu
           menuOpen={menuOpen}
           setMenuOpen={setMenuOpen}
           darkMode={darkMode}
         />
 
-        {/*
-          IMPORTANT: The 'main-content-padding' class is crucial.
-          It adds top padding to ensure your page content starts below the navigation bar.
-          Adjust 'pt-16' (which means padding-top: 4rem or 64px) based on the exact
-          height of your desktop navigation bar when it's closed.
-          You might need to inspect it in your browser's dev tools to get an accurate height.
-          If your nav bar is taller, increase this value (e.g., pt-20, pt-24).
-        */}
-        <main className="flex-grow pt-16 md:pt-24"> {/* Added padding for desktop and mobile */}
+        <main className="flex-grow pt-16 md:pt-24">
           <Routes>
             <Route path="/" element={<Home />} />
 
@@ -93,6 +86,15 @@ function App() {
             <Route path="/about-us/history" element={<History />} />
             <Route path="/about-us/confession-of-faith" element={<ConfessionOfFaith />} />
             <Route path="/about-us/provinces" element={<Provinces />} />
+
+            {/* Dynamic routes for Province Details - map through the data */}
+            {provincesData.map((province) => (
+              <Route
+                key={province.id}
+                path={`/about-us/provinces/${province.id}`}
+                element={<ProvinceDetail provinceData={province} />}
+              />
+            ))}
 
             {/* Gallery Routes */}
             <Route path="/gallery/service-pictures" element={<ServicePictures />} />
@@ -126,8 +128,6 @@ function App() {
             {/* Contact Us Routes */}
             <Route path="/contact-us/information" element={<ContactInformation />} />
 
-            {/* Potentially add a catch-all for 404 if needed */}
-            {/* <Route path="*" element={<NotFoundPage />} /> */}
           </Routes>
         </main>
 
