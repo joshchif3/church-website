@@ -1,91 +1,123 @@
-import { motion } from 'framer-motion';
-import { FiHome, FiBook, FiHeart, FiGlobe } from 'react-icons/fi';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { IoCloseCircleOutline } from 'react-icons/io5'; // For the close button on the modal
 
-const Projects = () => {
-  const projects = [
-    {
-      title: "Church Building Fund",
-      icon: <FiHome size={24} />,
-      description: "Help us expand our worship space to accommodate our growing congregation",
-      progress: 65,
-      target: "$500,000"
-    },
-    {
-      title: "Bible Distribution",
-      icon: <FiBook size={24} />,
-      description: "Providing Bibles to new believers and underprivileged communities",
-      progress: 40,
-      target: "$10,000"
-    },
-    {
-      title: "Community Feeding",
-      icon: <FiHeart size={24} />,
-      description: "Weekly meals for homeless and low-income families in our area",
-      progress: 85,
-      target: "$25,000"
-    },
-    {
-      title: "Mission Trip",
-      icon: <FiGlobe size={24} />,
-      description: "Supporting our team's outreach to rural communities",
-      progress: 30,
-      target: "$15,000"
-    },
-  ];
+import '../../styles/Projects/DevelopmentalProjects.css'; // Import the new CSS file
+
+// Import your banner image
+import developmentalProjectsBanner from '../../assets/develop-projects-banner.png'; //
+
+// Import the images for the "Conference Center Paving" section.
+// You'll need to ensure these image files exist in your src/assets/ folder.
+// For now, I'm using placeholder names. Please replace them with your actual image paths.
+import pavingImage1 from '../../assets/dev-project-1.jpg'; // Example: src/assets/dev-project-1.jpg
+import pavingImage2 from '../../assets/dev-project-2.jpg'; // Example: src/assets/dev-project-2.jpg
+import pavingImage3 from '../../assets/dev-project-3.jpg'; // Example: src/assets/dev-project-3.jpg
+
+
+const pavingImages = [
+  { id: 1, src: pavingImage1, alt: 'Conference Center Paving 1' },
+  { id: 2, src: pavingImage2, alt: 'Conference Center Paving 2' },
+  { id: 3, src: pavingImage3, alt: 'Conference Center Paving 3' },
+];
+
+const DevelopmentalProjects = () => {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const openModal = (image) => {
+    setSelectedImage(image);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
 
   return (
-    <div className="container mx-auto px-4 py-12 pb-16 md:pb-12">
+    <div className="developmental-projects-page-container">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
+        className="developmental-projects-content-wrapper"
       >
-        <h1 className="text-4xl font-display font-bold mb-8 text-center">Church Projects</h1>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
+        {/* Banner Section */}
+        <div className="developmental-projects-banner-section">
+          <img
+            src={developmentalProjectsBanner} //
+            alt="Development Projects Banner"
+            className="developmental-projects-banner-image"
+          />
+          {/* The "DEVELOPMENT PROJECTS" text is part of the banner image in your screenshot,
+              but if you want it as separate text, you could add it here with styling. */}
+          {/* <h1 className="developmental-projects-banner-text">DEVELOPMENT PROJECTS</h1> */}
+        </div>
+
+        {/* "Conference Center Paving" Heading */}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="conference-paving-heading"
+        >
+          Conference Center Paving
+        </motion.h2>
+
+        {/* Image Gallery */}
+        <div className="paving-image-gallery">
+          {pavingImages.map((image) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              key={image.id}
+              className="paving-thumbnail-container"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden"
+              transition={{ duration: 0.3 }}
+              onClick={() => openModal(image)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <div className="p-6">
-                <div className="flex items-center mb-4">
-                  <div className="p-3 rounded-full bg-primary-light/10 dark:bg-primary-dark/10 text-primary-light dark:text-primary-dark mr-4">
-                    {project.icon}
-                  </div>
-                  <h2 className="text-2xl font-display font-bold">{project.title}</h2>
-                </div>
-                <p className="mb-4">{project.description}</p>
-                
-                <div className="mb-2">
-                  <div className="flex justify-between text-sm mb-1">
-                    <span>Progress: {project.progress}%</span>
-                    <span>Target: {project.target}</span>
-                  </div>
-                  <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
-                    <div 
-                      className="bg-primary-light dark:bg-primary-dark h-2.5 rounded-full" 
-                      style={{ width: `${project.progress}%` }}
-                    ></div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="bg-gray-100 dark:bg-gray-600 px-6 py-3">
-                <button className="w-full py-2 bg-primary-light hover:bg-primary-dark text-white rounded-md transition-colors">
-                  Support This Project
-                </button>
-              </div>
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="paving-thumbnail-image"
+              />
             </motion.div>
           ))}
         </div>
+
       </motion.div>
+
+      {/* Image Modal/Lightbox */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            className="image-modal-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeModal} // Close when clicking outside the image
+          >
+            <motion.div
+              className="image-modal-content"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking on the image
+            >
+              <button className="modal-close-button" onClick={closeModal}>
+                <IoCloseCircleOutline size={36} />
+              </button>
+              <img
+                src={selectedImage.src}
+                alt={selectedImage.alt}
+                className="modal-full-image"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
 
-export default Projects;
+export default DevelopmentalProjects;

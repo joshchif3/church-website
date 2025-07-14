@@ -1,0 +1,125 @@
+/* src/styles/Payments/Offering.css */
+
+.offering-page-container {
+  background-color: #f9fafb; /* Light background for the page */
+  color: #1f2937; /* Dark text color */
+  min-height: 100vh;
+  padding: 2rem 1rem; /* General padding for the page */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align content to the top */
+}
+
+/* Dark mode styles */
+.dark .offering-page-container {
+  background-color: #1a202c;
+  color: #e2e8f0;
+}
+
+.offering-content-wrapper {
+  width: 100%;
+  max-width: 900px; /* Max width consistent with other payment sections */
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem 1.5rem;
+  margin-top: 3rem; /* Space from top */
+  margin-bottom: 4rem; /* Space before potential footer */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+}
+
+.dark .offering-content-wrapper {
+  background-color: #2d3748;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.offering-banner-section {
+  width: 100%;
+  position: relative;
+  margin-bottom: 2rem; /* Space below the banner */
+}
+
+.offering-banner-image {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Remove extra space below image */
+  border-radius: 8px; /* Slightly rounded corners for the banner */
+  object-fit: contain; /* Ensures the whole banner image is visible */
+}
+
+.for-offerings-heading {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #ce3a27; /* Red accent color */
+  text-align: center;
+  margin-bottom: 2rem; /* Space below "FOR OFFERINGS" heading */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.dark .for-offerings-heading {
+  color: #4f46e5; /* Blue accent for dark mode */
+}
+
+.offering-details-image-container {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Center the image */
+  margin-bottom: 2rem; /* Space below the details image */
+}
+
+.offering-details-image {
+  max-width: 100%; /* Ensure it fits within its container */
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+  border-radius: 8px; /* Consistent rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  object-fit: contain; /* Ensures the entire image content is visible */
+}
+
+.dark .offering-details-image {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Optional: Additional section for dynamic text if needed */
+.offering-info-section {
+  width: 100%;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+  text-align: center;
+}
+
+.dark .offering-info-section {
+  border-top-color: #4a5568;
+}
+
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 768px) {
+  .offering-page-container {
+    padding: 1.5rem 0.8rem;
+  }
+  .offering-content-wrapper {
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
+  .for-offerings-heading {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .offering-content-wrapper {
+    padding: 1.5rem 0.8rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .for-offerings-heading {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+}

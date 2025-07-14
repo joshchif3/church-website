@@ -1,0 +1,109 @@
+/* src/styles/Projects/FuturePlans.css */
+
+.future-plans-page-container {
+  background-color: #f9fafb; /* Light background for the page */
+  color: #1f2937; /* Dark text color */
+  min-height: 100vh;
+  padding: 2rem 1rem; /* General padding for the page */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align content to the top */
+}
+
+/* Dark mode styles */
+.dark .future-plans-page-container {
+  background-color: #1a202c;
+  color: #e2e8f0;
+}
+
+.future-plans-content-wrapper {
+  width: 100%;
+  max-width: 900px; /* Consistent max-width for content */
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem 1.5rem;
+  margin-top: 3rem; /* Space from top */
+  margin-bottom: 4rem; /* Space before potential footer */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+}
+
+.dark .future-plans-content-wrapper {
+  background-color: #2d3748;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.future-plans-banner-section {
+  width: 100%;
+  position: relative;
+  margin-bottom: 2rem; /* Space below the banner */
+}
+
+.future-plans-banner-image {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Remove extra space below image */
+  border-radius: 8px; /* Slightly rounded corners for the banner */
+  object-fit: contain; /* Ensures the whole banner image is visible */
+}
+
+.future-plans-main-heading {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #ce3a27; /* Red accent color */
+  text-align: center;
+  margin-bottom: 2rem; /* Space below heading */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.dark .future-plans-main-heading {
+  color: #4f46e5; /* Blue accent for dark mode */
+}
+
+.future-plans-details-section {
+  width: 100%;
+  padding-top: 1.5rem;
+  /* border-top: 1px solid #e2e8f0; /* Uncomment if you want a separator */
+  text-align: center;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.dark .future-plans-details-section {
+  /* border-top-color: #4a5568; */
+}
+
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 768px) {
+  .future-plans-page-container {
+    padding: 1.5rem 0.8rem;
+  }
+  .future-plans-content-wrapper {
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
+  .future-plans-main-heading {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  .future-plans-details-section {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .future-plans-content-wrapper {
+    padding: 1.5rem 0.8rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .future-plans-main-heading {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+}

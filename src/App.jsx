@@ -1,4 +1,3 @@
-// src/App.js
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -7,7 +6,7 @@ import Header from './Components/Header';
 import Footer from './Components/Footer';
 import NavigationMenu from './Components/NavigationMenu';
 import ChatBot from './Components/ChatBot';
-import ProvinceDetail from './Components/ProvinceDetail'; // CORRECTED PATH FOR ProvinceDetail
+import ProvinceDetail from './Components/ProvinceDetail';
 
 // Pages - Direct Imports for top-level pages that might still be files
 import Home from './pages/Home';
@@ -35,7 +34,7 @@ import EducationDepartment from './pages/Departments/EducationDepartment';
 import EvangelismDepartment from './pages/Departments/EvangelismDepartment';
 
 // Payments Sub-pages
-import Donations from './pages/Payments/Donations';
+import Donations from './pages/Payments/Donations'; // Updated import path and component name
 import Tithe from './pages/Payments/Tithe';
 import BankingDetails from './pages/Payments/BankingDetails';
 import Offering from './pages/Payments/Offering';
@@ -109,7 +108,7 @@ function App() {
             <Route path="/departments/evangelism" element={<EvangelismDepartment />} />
 
             {/* Payments Routes */}
-            <Route path="/payments/donations" element={<Donations />} />
+            <Route path="/payments/donations" element={<Donations />} /> {/* Updated component name */}
             <Route path="/payments/tithe" element={<Tithe />} />
             <Route path="/payments/banking-details" element={<BankingDetails />} />
             <Route path="/payments/offering" element={<Offering />} />

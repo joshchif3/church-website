@@ -1,0 +1,222 @@
+/* src/styles/Projects/DevelopmentalProjects.css */
+
+.developmental-projects-page-container {
+  background-color: #f9fafb; /* Light background for the page */
+  color: #1f2937; /* Dark text color */
+  min-height: 100vh;
+  padding: 2rem 1rem; /* General padding for the page */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align content to the top */
+}
+
+/* Dark mode styles */
+.dark .developmental-projects-page-container {
+  background-color: #1a202c;
+  color: #e2e8f0;
+}
+
+.developmental-projects-content-wrapper {
+  width: 100%;
+  max-width: 1000px; /* Wider max-width for gallery */
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem 1.5rem;
+  margin-top: 3rem; /* Space from top */
+  margin-bottom: 4rem; /* Space before potential footer */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+}
+
+.dark .developmental-projects-content-wrapper {
+  background-color: #2d3748;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.developmental-projects-banner-section {
+  width: 100%;
+  position: relative;
+  margin-bottom: 2rem; /* Space below the banner */
+}
+
+.developmental-projects-banner-image {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Remove extra space below image */
+  border-radius: 8px; /* Slightly rounded corners for the banner */
+  object-fit: contain; /* Ensures the whole banner image is visible */
+}
+
+/* If you have banner text as a separate element */
+/*
+.developmental-projects-banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  font-weight: bold;
+  color: white; /* Or a color that contrasts with your banner */
+  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
+  /* z-index: 10;
+  text-transform: uppercase;
+}
+*/
+
+.conference-paving-heading {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #ce3a27; /* Red accent color from your theme */
+  text-align: center;
+  margin-bottom: 2rem; /* Space below heading */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.dark .conference-paving-heading {
+  color: #4f46e5; /* Blue accent for dark mode */
+}
+
+/* Image Gallery Styles */
+.paving-image-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+  gap: 1.5rem; /* Space between images */
+  width: 100%;
+  padding: 1rem; /* Padding around the grid */
+}
+
+.paving-thumbnail-container {
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  background-color: #ffffff; /* Fallback for dark mode if image has transparency */
+}
+
+.dark .paving-thumbnail-container {
+  background-color: #2d3748;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.paving-thumbnail-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.paving-thumbnail-image {
+  width: 100%;
+  height: 200px; /* Fixed height for thumbnails */
+  object-fit: cover; /* Crop to fit, ensuring consistency */
+  display: block;
+}
+
+/* Modal/Lightbox Styles */
+.image-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85); /* Dark semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's on top of everything */
+  padding: 1rem;
+}
+
+.image-modal-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent; /* No background for the content itself */
+}
+
+.modal-full-image {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.modal-close-button {
+  position: absolute;
+  top: -15px; /* Adjust as needed */
+  right: -15px; /* Adjust as needed */
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 2rem;
+  padding: 0;
+  line-height: 1;
+  z-index: 1001; /* Ensure close button is above image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease-in-out;
+}
+
+.modal-close-button:hover {
+  color: #ff4d4d; /* Red color on hover for close button */
+}
+
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 768px) {
+  .developmental-projects-page-container {
+    padding: 1.5rem 0.8rem;
+  }
+  .developmental-projects-content-wrapper {
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
+  .conference-paving-heading {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  .paving-image-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+  .paving-thumbnail-image {
+    height: 150px;
+  }
+  .modal-close-button {
+    top: 5px; /* Adjust position for smaller screens */
+    right: 5px;
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .developmental-projects-content-wrapper {
+    padding: 1.5rem 0.8rem;
+  }
+  .conference-paving-heading {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+  .paving-image-gallery {
+    grid-template-columns: 1fr; /* Single column on very small screens */
+    gap: 0.8rem;
+  }
+  .paving-thumbnail-image {
+    height: 200px; /* Can make taller in single column */
+  }
+  .modal-close-button {
+    top: -5px;
+    right: -5px;
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,103 @@
+/* src/styles/AboutUs/YearPlanner.css */
+
+.year-planner-page-container {
+  background-color: #f9fafb; /* Light background for the page */
+  color: #1f2937; /* Dark text color */
+  min-height: 100vh;
+  padding: 2rem 1rem; /* General padding for the page */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align content to the top */
+}
+
+/* Dark mode styles */
+.dark .year-planner-page-container {
+  background-color: #1a202c;
+  color: #e2e8f0;
+}
+
+.year-planner-content-wrapper {
+  width: 100%;
+  max-width: 900px; /* Max width similar to other content sections */
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem 1.5rem;
+  margin-top: 3rem; /* Space from top */
+  margin-bottom: 4rem; /* Space before potential footer */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+}
+
+.dark .year-planner-content-wrapper {
+  background-color: #2d3748;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.year-planner-banner-section {
+  width: 100%;
+  position: relative;
+  margin-bottom: 2rem; /* Space below the banner */
+}
+
+.year-planner-banner-image {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Remove extra space below image */
+  border-radius: 8px; /* Slightly rounded corners for the banner */
+  object-fit: contain; /* Ensures the whole banner image is visible */
+}
+
+.national-calendar-image-container {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Center the image */
+  margin-bottom: 2rem; /* Space below the calendar image */
+}
+
+.national-calendar-image {
+  max-width: 100%; /* Ensure it fits within its container */
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+  border-radius: 8px; /* Consistent rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  object-fit: contain; /* Ensures the entire image content is visible */
+}
+
+.dark .national-calendar-image {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Optional: Additional section for dynamic text if needed */
+.year-planner-info-section {
+  width: 100%;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+  text-align: center;
+}
+
+.dark .year-planner-info-section {
+  border-top-color: #4a5568;
+}
+
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 768px) {
+  .year-planner-page-container {
+    padding: 1.5rem 0.8rem;
+  }
+  .year-planner-content-wrapper {
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .year-planner-content-wrapper {
+    padding: 1.5rem 0.8rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
+}
