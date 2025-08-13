@@ -1,150 +1,219 @@
-/* Hero Section Styles */
+/* home.css */
+
+/* --- Hero Section Styles --- */
 .hero-section {
     position: relative;
-    height: 60vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     overflow: hidden;
-  }
-  
-  .hero-overlay {
+}
+
+.hero-background-image {
     position: absolute;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.3);
-    z-index: 10;
-  }
-  
-  .hero-image {
-    position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     z-index: -1;
-  }
-  
-  .hero-content {
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for better text visibility */
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    color: white;
+    padding: 0 1rem;
+    max-width: 900px;
+}
+
+.hero-title {
+    /* CHANGE: Significantly reduced font size for a better fit */
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 0.5rem; /* Reduced margin */
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+}
+
+.hero-subtitle {
+    font-size: 1rem; /* Adjusted font size for subtitle */
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.hero-bible-verse {
+    font-size: 0.875rem; /* Adjusted font size for bible verse */
+    font-weight: 400;
+    margin-bottom: 1.5rem; /* Reduced margin */
+    display: block;
+    font-style: italic;
+}
+
+.hero-buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.hero-button {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border: 2px solid white;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.hero-button:hover {
+    background-color: white;
+    color: #082041;
+}
+
+/* --- Connect Cards Section --- */
+.connect-cards-section {
     position: relative;
     z-index: 20;
-    text-align: center;
+    margin-top: -50px;
     padding: 0 1rem;
-  }
-  
-  .hero-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 1rem;
-    text-align: left;
-    max-width: 65%;
-    padding-left: 1rem;
-  }
-  
-  @media (min-width: 768px) {
-    .hero-title {
-      font-size: 3rem;
-    }
-  }
-  
-  /* Belief Section */
-  .belief-section {
-    padding: 4rem 1rem;
-    background-color: #f9fafb;
+}
+
+.connect-cards-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
     max-width: 1280px;
     margin: 0 auto;
-    border-top: 1px solid #e5e7eb;
-    border-bottom: 1px solid #e5e7eb;
-  }
-  
-  .belief-title {
+}
+
+.connect-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 280px;
+    height: 60px;
+    background-color: #000;
+    border: 2px solid white;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    padding: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 0.9rem; /* Added font size for the new text */
+}
+
+.connect-card:hover {
+    background-color: #082041;
+    border-color: #082041;
+    color: white;
+}
+
+/* --- Our Vision & Welcome Section --- */
+.vision-section, .welcome-section {
+    padding: 4rem 1rem;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.vision-section {
+    padding-top: 6rem; /* Add more space after the cards */
+}
+
+.section-title {
     font-size: 2.5rem;
-    font-weight: 800;
+    font-weight: 700;
     color: #1f2937;
-    border-left: 6px solid #4f46e5;
-    padding-left: 1rem;
-    margin-bottom: 2rem;
-    text-align: left;
-  }
-  
-  @media (min-width: 768px) {
-    .belief-title {
-      font-size: 3rem;
-    }
-  }
-  
-  .belief-text {
+    margin-bottom: 1.5rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.vision-text, .welcome-text {
     font-size: 1.125rem;
     line-height: 1.8;
     color: #374151;
+}
+
+/* --- Weekly Message Section --- */
+.weekly-message-section {
+    padding: 4rem 1rem;
+    text-align: center;
+}
+
+.weekly-message-section .section-title {
+    margin-bottom: 2rem;
+}
+
+.video-wrapper {
     max-width: 900px;
     margin: 0 auto;
-    text-align: justify;
-    padding: 0 1rem;
-  }
-  
-  /* Weekly Message Section */
-  .weekly-message-section {
-    padding: 4rem 1rem;
-    background-color: #f9fafb;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-  
-  .weekly-message-section h2 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    color: #1f2937;
-  }
-  
-  .video-wrapper {
-    width: 100%;
-    
-    aspect-ratio: 1000 / 1000;
     position: relative;
-  }
-  
-  .video-wrapper iframe {
-    aspect-ratio: 10 / 10;
-  
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    border: none;
-    border-radius: 0.75rem;
-  }
-  
-  /* Events Section */
-  .events-section {
-    background-color: #f3f4f6;
-    padding: 4rem 1rem;
-  }
-  
-  @media (prefers-color-scheme: dark) {
-    .events-section {
-      background-color: #0e203a;
-    }
-  }
-  
-  .section-title {
-    font-size: 1.875rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 3rem;
-  }
+}
 
-  /* Map Section */
+/* --- Events Section --- */
+.events-section {
+    padding: 4rem 1rem;
+}
+
+.events-section .section-title {
+    margin-bottom: 3rem;
+}
+
+/* --- Map Section --- */
 .map-section {
-    background-color: #f9fafb;
-  }
-  
-  .map-wrapper {
-    max-width: 100px;
-    height: 450px;
-    width: 100%;
-  }
-  
+    padding: 4rem 1rem;
+}
+
+.map-container {
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Responsive Adjustments --- */
+@media (min-width: 768px) {
+    .hero-title {
+        /* CHANGE: Reduced font size for larger screens */
+        font-size: 2.5rem;
+    }
+
+    .connect-card {
+        width: calc(25% - 0.75rem);
+    }
+}
